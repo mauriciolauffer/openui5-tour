@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Mauricio Lauffer">
+  <title>OpenUI5 - Tour</title>
+  <script id="sap-ui-bootstrap" type="text/javascript"
+          src="https://openui5.hana.ondemand.com/1.48.5/resources/sap-ui-core.js"
+          data-sap-ui-preload="async"
+          data-sap-ui-theme="sap_belize"
+          data-sap-ui-libs="sap.m, sap.ui.layout, openui5.tour"
+          data-sap-ui-resourceroots='{
+          "mlauffer.demo.openui5.tour": "./",
+          "openui5.tour": "../../src/openui5/tour"}'>
+	</script>
+	<script>
+		sap.ui.getCore().attachInit(function() {
+      sap.ui.require([
+        'sap/m/Shell',
+        'sap/ui/core/ComponentContainer'
+      ], function(Shell, ComponentContainer) {
+        sap.ui.component({
+          name: 'mlauffer.demo.openui5.tour',
+          manifest: true,
+          async: true
+        }).then(function(oComponent) {
+          new Shell({
+            app: new ComponentContainer({
+              height: '100%',
+              component: oComponent
+            })
+          }).placeAt('root');
+        });
+      });
+    });
+	</script>
+</head>
+<body class="sapUiBody" id="root" role="application"></body>
+</html>

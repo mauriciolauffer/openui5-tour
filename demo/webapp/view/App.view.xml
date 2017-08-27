@@ -1,0 +1,35 @@
+<mvc:View controllerName="mlauffer.demo.openui5.tour.controller.App" displayBlock="true"
+          xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns="sap.m">
+    <App>
+        <Page title="{i18n>TITLE}">
+            <content>
+                <f:SimpleForm maxContainerCols="2" layout="ResponsiveGridLayout">
+                    <Label text="Country" required="true" />
+                    <Select id="country">
+                        <core:Item key="" text="" />
+                        <core:Item key="A" text="Australia" />
+                        <core:Item key="B" text="Brasil" />
+                    </Select>
+                    <Label text="Name" required="true" />
+                    <Input id="name" />
+                    <Label text="Email" required="true" />
+                    <Input id="email" />
+                    <Label text="Website" />
+                    <Input id="website" />
+                    <Label text="Salary" />
+                    <Input id="salary" type="Number" />
+                    <Label text="Birthdate" />
+                    <DatePicker id="birthdate" />
+                </f:SimpleForm>
+            </content>
+            <footer>
+                <Toolbar>
+                    <Button id="btMessagePopover" icon="sap-icon://message-popup" type="Reject"
+                            visible="false" press="onMessagePopoverPress"/>
+                    <ToolbarSpacer/>
+                    <Button icon="sap-icon://save" text="Save" press="onSave" />
+                </Toolbar>
+            </footer>
+        </Page>
+    </App>
+</mvc:View>

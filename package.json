@@ -1,0 +1,48 @@
+{
+  "name": "openui5-tour",
+  "version": "0.0.1",
+  "description": "An OpenUI5 library to give a guided tour through your OpenUI5 webapp.",
+  "author": "Mauricio Lauffer",
+  "license": "MIT",
+  "keywords": [
+    "openui5",
+    "sapui5",
+    "ui5",
+    "ui5lab",
+    "tour",
+    "guide",
+    "intro",
+    "showcase"
+  ],
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-eslint": "^20.0.0",
+    "grunt-karma": "^2.0.0",
+    "grunt-openui5": "^0.12.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-openui5": "^0.2.2",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-qunit": "^1.2.1",
+    "karma-sinon": "^1.0.5",
+    "qunitjs": "^2.4.0"
+  },
+  "scripts": {
+    "test": "grunt lint && grunt test",
+    "start": "grunt serve",
+    "build": "grunt build",
+    "postinstall": "grunt copy-3rdparty-to-src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mauriciolauffer/openui5-tour.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mauriciolauffer/openui5-tour/issues"
+  }
+}
