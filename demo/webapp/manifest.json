@@ -7,14 +7,9 @@
 		"dependencies": {
 			"libs": {
 				"sap.ui.core": {},
-        "sap.ui.layout": {},
-				"sap.m": {}
+				"sap.m": {},
+        "openui5.tour": {}
 			}
-		},
-		"rootView": {
-			"viewName": "mlauffer.demo.openui5.tour.view.App",
-			"type": "XML",
-			"id": "app"
 		},
 		"models": {
 			"i18n": {
@@ -24,6 +19,10 @@
 				}
 			}
 		},
-    "handleValidation": true
+		"rootView": {
+			"viewName": "mlauffer.demo.openui5.tour.view.App",
+			"id": "rootApp",
+			"type": "XML"
+		}
 	}
 }

@@ -1,33 +1,27 @@
 <mvc:View controllerName="mlauffer.demo.openui5.tour.controller.App" displayBlock="true"
-          xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns="sap.m">
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m">
     <App>
-        <Page title="{i18n>TITLE}">
-            <content>
-                <f:SimpleForm maxContainerCols="2" layout="ResponsiveGridLayout">
-                    <Label text="Country" required="true" />
-                    <Select id="country">
-                        <core:Item key="" text="" />
-                        <core:Item key="A" text="Australia" />
-                        <core:Item key="B" text="Brasil" />
-                    </Select>
-                    <Label text="Name" required="true" />
-                    <Input id="name" />
-                    <Label text="Email" required="true" />
-                    <Input id="email" />
-                    <Label text="Website" />
-                    <Input id="website" />
-                    <Label text="Salary" />
-                    <Input id="salary" type="Number" />
-                    <Label text="Birthdate" />
-                    <DatePicker id="birthdate" />
-                </f:SimpleForm>
-            </content>
+        <Page id="page" title="{i18n>TITLE}">
+            <Panel id="panel1" height="300px">
+                <Title text="Panel 1" />
+            </Panel>
+            <Panel id="panel2" height="300px">
+                <Title text="Panel 2" />
+            </Panel>
+            <Panel id="panel3" height="300px">
+                <Title id="title3" text="Panel 3" />
+            </Panel>
+            <Panel id="panel4" height="300px">
+                <Title text="Panel 4" />
+            </Panel>
+            <Panel id="panel5" height="300px">
+                <Title text="Panel 5" />
+            </Panel>
             <footer>
                 <Toolbar>
-                    <Button id="btMessagePopover" icon="sap-icon://message-popup" type="Reject"
-                            visible="false" press="onMessagePopoverPress"/>
-                    <ToolbarSpacer/>
-                    <Button icon="sap-icon://save" text="Save" press="onSave" />
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://begin" text="{i18n>START}" press="onStartTour" />
                 </Toolbar>
             </footer>
         </Page>

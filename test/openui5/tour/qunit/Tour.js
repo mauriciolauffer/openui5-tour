@@ -45,11 +45,6 @@ sap.ui.require([
     });
   }
 
-  function getSchema() {
-    return {
-    };
-  }
-
   const { test } = QUnit;
 
   QUnit.module('Tour', function() {
