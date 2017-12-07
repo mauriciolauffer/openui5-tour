@@ -99,7 +99,8 @@ module.exports = function(grunt) {
   grunt.registerTask('coverage', ['clean:coverage', 'openui5_connect:src', 'karma:coverage']);
 
   // Build task
-  grunt.registerTask('build', ['clean:dist', 'openui5_preload', 'copy']);
+  //grunt.registerTask('build', ['clean:dist', 'openui5_preload', 'copy']);
+  grunt.registerTask('build', ['clean:dist', 'openui5_preload']);
 
   // Default task
   grunt.registerTask('default', ['serve']);

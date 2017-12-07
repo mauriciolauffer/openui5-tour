@@ -15,7 +15,7 @@
     "showcase"
   ],
   "devDependencies": {
-    "eslint": "^4.11.0",
+    "eslint": "^4.12.1",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-connect": "^1.0.2",
@@ -35,8 +35,7 @@
   "scripts": {
     "test": "grunt lint && grunt test",
     "start": "grunt serve",
-    "build": "grunt build",
-    "postinstall": "grunt copy-3rdparty-to-src"
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",
