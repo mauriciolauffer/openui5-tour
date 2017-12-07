@@ -1,18 +1,13 @@
 sap.ui.require([
   'jquery.sap.global',
-  'sap/ui/base/Object',
-  'sap/ui/core/ValueState',
-  'sap/ui/core/MessageType',
-  'sap/ui/core/message/Message',
-  'sap/ui/layout/form/SimpleForm',
-  'sap/m/DatePicker',
-  'sap/m/Input',
-  'sap/m/Label',
+  'sap/m/Panel',
+  'sap/m/Title',
   'sap/m/Page',
   'openui5/tour/Tour',
+  'openui5/tour/TourStep',
   'sap/ui/thirdparty/sinon',
   'sap/ui/thirdparty/sinon-qunit'
-], function($, UI5Object, ValueState, MessageType, Message, SimpleForm, DatePicker, Input, Label, Page, Tour) {
+], function($, Panel, Title, Page, Tour, TourStep) {
   'use strict';
 
   sap.ui.jsview('mlauffer.test.view', {
@@ -20,28 +15,27 @@ sap.ui.require([
       return '';
     },
     createContent: function() {
-      const form = new SimpleForm(this.createId('form'), {
-        content: [
-          new Label({text: 'User ID'}),
-          new Input(this.createId('userid')),
-          new Label({text: 'Description'}),
-          new Input(this.createId('description')),
-          new Label({text: 'Amount $'}),
-          new Input(this.createId('amount')),
-          new Label({text: 'Create Date'}),
-          new DatePicker(this.createId('createdate')),
-        ]
+      const panel = new Panel(this.createId('panel'), {
+        content: [ new Title({text: 'Title 1'}) ]
       });
       return new Page(this.createId('page'), {
-        content: form
+        content: panel
       });
     }
   });
 
-  function getView() {
+  function createView() {
     return sap.ui.view({
       type: sap.ui.core.mvc.ViewType.JS,
       viewName:'mlauffer.test.view'
+    });
+  }
+
+  function createTourStep(target) {
+    return new TourStep({
+      content: new sap.m.Text({ text: 'Hey! It is a tour!' }),
+      target: target,
+      title: 'Tour step...'
     });
   }
 
@@ -50,6 +44,176 @@ sap.ui.require([
   QUnit.module('Tour', function() {
     QUnit.module('constructor', () => {
       test('Should instantiate the control', (assert) => {
+        const tour = new Tour();
+        assert.deepEqual(tour._getCurrentStepIndex(), 0);
+        assert.deepEqual(tour.getSteps().length, 0);
+      });
+    });
+
+    QUnit.module('_getCurrentStepIndex', () => {
+      test('Should return the current step index', (assert) => {
+        const tour = new Tour();
+        tour._setCurrentStepIndex(10);
+        assert.deepEqual(tour._getCurrentStepIndex(), 10);
+      });
+    });
+
+    QUnit.module('_setCurrentStepIndex', () => {
+      test('Should set the current step index', (assert) => {
+        const tour = new Tour();
+        tour._setCurrentStepIndex(10);
+        assert.deepEqual(tour._getCurrentStepIndex(), 10);
+      });
+    });
+
+    QUnit.module('_isValidStepIndex', () => {
+      test('Should return step index is valid', (assert) => {
+        const tour = new Tour({
+          steps: [createTourStep(), createTourStep()]
+        });
+        assert.deepEqual(tour._isValidStepIndex(1), true);
+      });
+
+      test('Should return step index is invalid for empty steps', (assert) => {
+        const tour = new Tour();
+        try {
+          tour._isValidStepIndex(0);
+          assert.deepEqual(true, false, 'Should never be executed!');
+        } catch (e) {
+          assert.deepEqual(e instanceof Error, true);
+        }
+      });
+
+      test('Should return step index is invalid for a lower value', (assert) => {
+        const tour = new Tour({
+          steps: [createTourStep(), createTourStep()]
+        });
+        try {
+          tour._isValidStepIndex(-1);
+          assert.deepEqual(true, false, 'Should never be executed!');
+        } catch (e) {
+          assert.deepEqual(e instanceof Error, true);
+        }
+      });
+
+      test('Should return step index is invalid for a higher value', (assert) => {
+        const tour = new Tour({
+          steps: [createTourStep(), createTourStep()]
+        });
+        try {
+          tour._isValidStepIndex(3);
+          assert.deepEqual(true, false, 'Should never be executed!');
+        } catch (e) {
+          assert.deepEqual(e instanceof Error, true);
+        }
+      });
+    });
+
+
+
+    QUnit.module('_goToStep', () => {
+      test('Should close current step, set new current step and open it', (assert) => {
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
+        });
+        tour._goToStep(1);
+        const step = tour.getSteps()[1];
+        step.open();
+        assert.deepEqual(step.getAggregation('_popup').isOpen(), true);
+        assert.deepEqual(tour._getCurrentStepIndex(), 1);
+        tour.destroy();
+        view.destroy();
+      });
+    });
+
+    QUnit.module('_setFirstStep', () => {
+      test('Should set the first step', (assert) => {
+        const tour = new Tour({
+          steps: [createTourStep(), createTourStep()]
+        });
+        tour._setFirstStep();
+        assert.deepEqual(tour.getSteps()[0]._isFirstStep, true);
+        assert.deepEqual(tour.getSteps()[1]._isFirstStep, false);
+      });
+    });
+
+    QUnit.module('_setLastStep', () => {
+      test('Should set the last step', (assert) => {
+        const tour = new Tour({
+          steps: [createTourStep(), createTourStep()]
+        });
+        tour._setLastStep();
+        assert.deepEqual(tour.getSteps()[0]._isLastStep, false);
+        assert.deepEqual(tour.getSteps()[1]._isLastStep, true);
+      });
+    });
+
+    QUnit.module('start', () => {
+      test('Should open first step and start tour', (assert) => {
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep()]
+        });
+        tour.start();
+        assert.deepEqual(tour._getCurrentStepIndex(), 0);
+        assert.deepEqual(tour.getSteps()[0].getAggregation('_popup').isOpen(), true);
+        tour.destroy();
+        view.destroy();
+      });
+    });
+
+    QUnit.module('complete', () => {
+      test('Should close current step and finish tour', (assert) => {
+        //TODO
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
+        });
+        tour.start();
+        tour.complete();
+        assert.deepEqual(tour._getCurrentStepIndex(), 0);
+        assert.deepEqual(tour.getSteps()[0].getAggregation('_popup').isOpen(), false);
+        tour.destroy();
+        view.destroy();
+      });
+    });
+
+    QUnit.module('nextStep', () => {
+      test('Should open a given step', (assert) => {
+        //TODO
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep()]
+        });
+        tour.getSteps()[0].open();
+        assert.deepEqual(false, true);
+        tour.destroy();
+        view.destroy();
+      });
+    });
+
+    QUnit.module('previousStep', () => {
+      test('Should open a given step', (assert) => {
+        //TODO
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep()]
+        });
+        tour.getSteps()[0].open();
+        assert.deepEqual(false, true);
+        tour.destroy();
+        view.destroy();
       });
     });
   });
