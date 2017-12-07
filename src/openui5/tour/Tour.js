@@ -17,54 +17,62 @@ sap.ui.define([
       },
       events: {
         /**
-         * The start event is fired when the tour is started.
+         * The started event is fired when the tour is started.
          */
-        start: {
+        started: {
           parameters: {}
         },
         /**
-         * The end event is fired when the tour is ended.
+         * The completed event is fired when the tour is completed.
          */
-        end: {
+        completed: {
+          parameters: {}
+        },
+        /**
+         * The nextStep event is fired every time the next step is called.
+         */
+        nextStep: {
+          parameters: {}
+        },
+        /**
+         * The previousStep event is fired every time the previous step is called.
+         */
+        previousStep: {
           parameters: {}
         }
       }
     }
   });
 
-  Tour._currentStepIndex = 0;
-  Tour._tourStarted = false;
-
   /**
    * Initialize tour object
    * @public
    */
   Tour.prototype.init = function () {
-    /*this._currentStepIndex = 0;
-    this._setCurrentStepIndex(0);
-    this._tourStarted = false;*/
+    this._currentStepIndex = 0;
   };
 
   /**
    * Starts the tour, opens dialog step 0
    * @public
    */
-  Tour.prototype.startTour = function() {
+  Tour.prototype.start = function() {
     this._setFirstStep();
     this._setLastStep();
     this._setCurrentStepIndex(0);
     this._goToStep(this._getCurrentStepIndex());
-    this.fireStart();
+    this.fireStarted();
   };
 
   /**
-   * Ends tour object, closes dialog step
+   * Completes tour object, closes dialog step
    * @public
    */
-  Tour.prototype.endTour = function() {
-    this._closeStep(this._getCurrentStepIndex());
+  Tour.prototype.complete = function() {
+    this.getSteps()[this._getCurrentStepIndex()].close();
+    //this._closeStep(this._getCurrentStepIndex());
     this._setCurrentStepIndex(0);
-    this.fireEnd();
+    this.fireCompleted();
   };
 
   /**
@@ -74,6 +82,7 @@ sap.ui.define([
   Tour.prototype.nextStep = function() {
     var nextStep = this._getCurrentStepIndex() + 1;
     this._goToStep(nextStep);
+    this.fireNextStep();
   };
 
   /**
@@ -83,6 +92,7 @@ sap.ui.define([
   Tour.prototype.previousStep = function() {
     var previousStep = this._getCurrentStepIndex() - 1;
     this._goToStep(previousStep);
+    this.firePreviousStep();
   };
 
   /**
@@ -122,30 +132,14 @@ sap.ui.define([
    * @private
    */
   Tour.prototype._goToStep = function (stepIndex) {
-    this._closeStep(this._getCurrentStepIndex());
+    /*this._closeStep(this._getCurrentStepIndex());
     this._setCurrentStepIndex(stepIndex);
-    this._openStep(stepIndex);
-  };
+    this._openStep(stepIndex);*/
 
-  /**
-   * Opens a given step.
-   * @param {int} stepIndex The step to open.
-   * @private
-   */
-  Tour.prototype._openStep = function(stepIndex) {
     if (this._isValidStepIndex(stepIndex)) {
+      this.getSteps()[this._getCurrentStepIndex()].close();
+      this._setCurrentStepIndex(stepIndex);
       this.getSteps()[stepIndex].open();
-    }
-  };
-
-  /**
-   * Closes a given step.
-   * @param {int} stepIndex The step to close.
-   * @private
-   */
-  Tour.prototype._closeStep = function(stepIndex) {
-    if (this._isValidStepIndex(stepIndex)) {
-      this.getSteps()[stepIndex].close();
     }
   };
 

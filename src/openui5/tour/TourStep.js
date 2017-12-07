@@ -40,20 +40,6 @@ sap.ui.define([
          * The internal popup instance which is either a dialog on phone or a popover on the rest of platforms
          */
         _popup: {type: 'sap.ui.core.Control', multiple: false, visibility: 'hidden'}
-      },
-      events: {
-        /**
-         * The nextStep event is fired every time the next step is called.
-         */
-        nextStep: {
-          parameters: {}
-        },
-        /**
-         * The previousStep event is fired every time the previous step is called.
-         */
-        previousStep: {
-          parameters: {}
-        }
       }
     }
   });
@@ -191,7 +177,6 @@ sap.ui.define([
    */
   TourStep.prototype._nextStep = function () {
     this.getParent().nextStep();
-    this.fireNextStep();
   };
 
   /**
@@ -200,7 +185,6 @@ sap.ui.define([
    */
   TourStep.prototype._previousStep = function () {
     this.getParent().previousStep();
-    this.firePreviousStep();
   };
 
   /**
@@ -208,7 +192,7 @@ sap.ui.define([
    * @private
    */
   TourStep.prototype._finishStep = function () {
-    this.getParent().endTour();
+    this.getParent().complete();
   };
 
   return TourStep;
