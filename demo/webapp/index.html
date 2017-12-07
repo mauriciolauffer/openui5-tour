@@ -7,15 +7,15 @@
   <meta name="author" content="Mauricio Lauffer">
   <title>OpenUI5 - Tour</title>
   <script type="text/javascript" id="sap-ui-bootstrap"
-          src="../../resources/sap-ui-core.js"
+          src="https://openui5.hana.ondemand.com/1.50.5/resources/sap-ui-core.js"
           data-sap-ui-libs="sap.m"
           data-sap-ui-theme="sap_belize"
           data-sap-ui-compatVersion="edge" data-sap-ui-preload="async"
           data-sap-ui-resourceroots='{
           "mlauffer.demo.openui5.tour": "./",
-          "openui5.tour": "../../src/openui5/tour"}'></script>
+          "openui5.tour": "../../dist/openui5/tour"}'></script>
 </head>
-<body class="sapUiBody">
+<body class="sapUiBody" role="application">
 <div id="content"></div>
 <script type="text/javascript">
   sap.ui.getCore().attachInit(
@@ -27,7 +27,7 @@
       ], function (Shell, ComponentContainer) {
         sap.ui.component({
           name: "mlauffer.demo.openui5.tour",
-          manifestFirst: true,
+          manifest: true,
           async: true
         }).then(function(oComponent) {
           new Shell({
