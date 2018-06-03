@@ -1,5 +1,5 @@
 {
-  "ui5lab.striptoastr": {
+  "openui5.tour": {
     "icon": "sap-icon://enter-more",
     "name": "openui5-tour",
     "description": "An OpenUI5 library to give a guided tour through your UI5 webapp.",
@@ -9,7 +9,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "content": {
-      "StripToastr": {
+      "TourShowFeatures": {
         "id": "openui5-tour",
         "name": "openui5-tour",
         "type": "control",
