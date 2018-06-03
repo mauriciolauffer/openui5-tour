@@ -48,6 +48,13 @@ sap.ui.require([
         assert.deepEqual(tour._getCurrentStepIndex(), 0);
         assert.deepEqual(tour.getSteps().length, 0);
       });
+      test('Should instantiate the control with 2 steps', (assert) => {
+        const tour = new Tour({
+          steps: [createTourStep(), createTourStep()]
+        });
+        assert.deepEqual(tour._getCurrentStepIndex(), 0);
+        assert.deepEqual(tour.getSteps().length, 2);
+      });
     });
 
     QUnit.module('_getCurrentStepIndex', () => {
@@ -169,7 +176,7 @@ sap.ui.require([
 
     QUnit.module('complete', () => {
       test('Should close current step and finish tour', (assert) => {
-        //TODO
+        const done = assert.async();
         const view = createView();
         view.placeAt('content');
         sap.ui.getCore().applyChanges();
@@ -177,41 +184,81 @@ sap.ui.require([
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
         });
         tour.start();
+        tour.nextStep();
         tour.complete();
         assert.deepEqual(tour._getCurrentStepIndex(), 0);
-        assert.deepEqual(tour.getSteps()[0].getAggregation('_popup').isOpen(), false);
-        tour.destroy();
-        view.destroy();
+        setTimeout(() => {
+          assert.deepEqual(tour.getSteps()[0].getAggregation('_popup').isOpen(), false);
+          tour.destroy();
+          view.destroy();
+          done();
+        }, 500);
       });
     });
 
     QUnit.module('nextStep', () => {
-      test('Should open a given step', (assert) => {
-        //TODO
+      test('Should open the next step', (assert) => {
         const view = createView();
         view.placeAt('content');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
-          steps: [createTourStep(view.byId('panel')), createTourStep()]
+          steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
         });
-        tour.getSteps()[0].open();
-        assert.deepEqual(false, true);
+        tour.start();
+        tour.nextStep();
+        assert.deepEqual(tour._getCurrentStepIndex(), 1);
+        tour.destroy();
+        view.destroy();
+      });
+      test('Should fail when next step does not exist', (assert) => {
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
+        });
+        tour.start();
+        try {
+          tour.nextStep();
+          tour.nextStep();
+          assert.deepEqual(false, true, 'Should not be executed...');
+        } catch (e) {
+          assert.deepEqual(e instanceof Error, true);
+        }
         tour.destroy();
         view.destroy();
       });
     });
 
     QUnit.module('previousStep', () => {
-      test('Should open a given step', (assert) => {
-        //TODO
+      test('Should open the previous step', (assert) => {
         const view = createView();
         view.placeAt('content');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
-          steps: [createTourStep(view.byId('panel')), createTourStep()]
+          steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
         });
-        tour.getSteps()[0].open();
-        assert.deepEqual(false, true);
+        tour.start();
+        tour.nextStep();
+        tour.previousStep();
+        assert.deepEqual(tour._getCurrentStepIndex(), 0);
+        tour.destroy();
+        view.destroy();
+      });
+      test('Should fail when previous step does not exist', (assert) => {
+        const view = createView();
+        view.placeAt('content');
+        sap.ui.getCore().applyChanges();
+        const tour = new Tour({
+          steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
+        });
+        tour.start();
+        try {
+          tour.previousStep();
+          assert.deepEqual(false, true, 'Should not be executed...');
+        } catch (e) {
+          assert.deepEqual(e instanceof Error, true);
+        }
         tour.destroy();
         view.destroy();
       });
