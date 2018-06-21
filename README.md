@@ -9,6 +9,13 @@ You can checkout a live demo here: https://embed.plnkr.co/vVvwApRB7mKddPfGccG2/
 [<img src="openui5-tour.png">](https://raw.githubusercontent.com/mauriciolauffer/openui5-tour/master/openui5-tour.png)
 
 
+## Project Structure
+* demo - Demo site for the library
+* dist - Distribution folder that contains the library ready to use
+* src  - Development folder
+* test - Testing framework for the library
+
+
 ## Getting started
 
 ### Installation
