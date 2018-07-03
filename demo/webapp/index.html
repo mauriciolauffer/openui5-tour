@@ -5,11 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Mauricio Lauffer">
-  <title>OpenUI5 - Tour</title>
-  <script type="text/javascript" id="sap-ui-bootstrap"
+  <title>OpenUI5 Tour</title>
+  <script id="sap-ui-bootstrap"
           src="https://openui5.hana.ondemand.com/1.50.5/resources/sap-ui-core.js"
-          data-sap-ui-libs="sap.m"
-          data-sap-ui-theme="sap_belize"
+          data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_belize"
           data-sap-ui-compatVersion="edge" data-sap-ui-preload="async"
           data-sap-ui-resourceroots='{
           "mlauffer.demo.openui5.tour": "./",
@@ -17,28 +16,25 @@
 </head>
 <body class="sapUiBody" role="application">
 <div id="content"></div>
-<script type="text/javascript">
-  sap.ui.getCore().attachInit(
-    function() {
-      "use strict";
-      sap.ui.require([
-        "sap/m/Shell",
-        "sap/ui/core/ComponentContainer"
-      ], function (Shell, ComponentContainer) {
-        sap.ui.component({
-          name: "mlauffer.demo.openui5.tour",
-          manifest: true,
-          async: true
-        }).then(function(oComponent) {
-          new Shell({
-            app: new ComponentContainer({
-              height: "100%",
-              component: oComponent
-            }),
-          }).placeAt("content");
-        });
+<script>
+  sap.ui.getCore().attachInit(function() {
+    "use strict";
+    sap.ui.require([
+      "sap/ui/core/Component",
+      "sap/ui/core/ComponentContainer"
+    ], function (Component, ComponentContainer) {
+      sap.ui.component({
+        id: "mlauffer_tour",
+        name: "mlauffer.demo.openui5.tour",
+        manifest: true,
+        async: true
+      }).then(function(oComponent) {
+        new ComponentContainer({
+          component: oComponent
+        }).placeAt("content");
       });
     });
+  });
 </script>
 </body>
 </html>
