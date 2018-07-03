@@ -1,7 +1,8 @@
 {
 	"sap.app": {
 		"id": "mlauffer.demo.openui5.tour",
-		"type": "application"
+		"type": "application",
+    "i18n": "i18n/i18n.properties"
 	},
 	"sap.ui5": {
 		"dependencies": {
@@ -22,7 +23,8 @@
 		"rootView": {
 			"viewName": "mlauffer.demo.openui5.tour.view.App",
 			"id": "rootApp",
-			"type": "XML"
+			"type": "XML",
+      "async": true
 		}
 	}
 }
