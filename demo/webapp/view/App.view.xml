@@ -1,29 +1,31 @@
 <mvc:View controllerName="mlauffer.demo.openui5.tour.controller.App" displayBlock="true"
           xmlns:mvc="sap.ui.core.mvc"
           xmlns="sap.m">
-    <App>
-        <Page id="page" title="{i18n>TITLE}">
-            <Panel id="panel1" height="300px">
-                <Title text="Panel 1" />
-            </Panel>
-            <Panel id="panel2" height="300px">
-                <Title text="Panel 2" />
-            </Panel>
-            <Panel id="panel3" height="300px">
-                <Title id="title3" text="Panel 3" />
-            </Panel>
-            <Panel id="panel4" height="300px">
-                <Title text="Panel 4" />
-            </Panel>
-            <Panel id="panel5" height="300px">
-                <Title text="Panel 5" />
-            </Panel>
-            <footer>
-                <Toolbar>
-                    <ToolbarSpacer />
-                    <Button icon="sap-icon://begin" text="{i18n>START}" press="onStartTour" />
-                </Toolbar>
-            </footer>
-        </Page>
-    </App>
+    <Shell>
+        <App>
+            <Page id="page" title="{i18n>TITLE}">
+                <Panel id="panel1" height="300px">
+                    <Title text="Panel 1" />
+                </Panel>
+                <Panel id="panel2" height="300px">
+                    <Title text="Panel 2" />
+                </Panel>
+                <Panel id="panel3" height="300px">
+                    <Title id="title3" text="Panel 3" />
+                </Panel>
+                <Panel id="panel4" height="300px">
+                    <Title text="Panel 4" />
+                </Panel>
+                <Panel id="panel5" height="300px">
+                    <Title text="Panel 5" />
+                </Panel>
+                <footer>
+                    <Toolbar>
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://begin" text="{i18n>START}" press="onStartTour" />
+                    </Toolbar>
+                </footer>
+            </Page>
+        </App>
+    </Shell>
 </mvc:View>
