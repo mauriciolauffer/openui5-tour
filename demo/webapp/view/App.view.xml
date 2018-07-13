@@ -20,7 +20,7 @@
                     <Title text="Panel 5" />
                 </Panel>
                 <footer>
-                    <Toolbar>
+                    <Toolbar id="footerBar">
                         <ToolbarSpacer />
                         <Button icon="sap-icon://begin" text="{i18n>START}" press="onStartTour" />
                     </Toolbar>

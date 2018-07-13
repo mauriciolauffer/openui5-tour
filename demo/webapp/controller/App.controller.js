@@ -21,7 +21,7 @@ sap.ui.define([
 
         new TourStep({
           content: new Button({ text: 'Hey! It is a tour!' }),
-          target: this.getView().byId('panel4'),
+          target: this.getView().byId('footerBar'),
           title: 'Tour test step2...'
         }),
 
