@@ -1,10 +1,20 @@
 language: node_js
-sudo: false
+sudo: required
 node_js:
-  - "6.0"
+  - "lts/carbon"
+addons:
+  chrome: stable
 cache:
   directories:
     - node_modules
 install:
+  - npm install -g @ui5/cli
   - npm install
-  - npm install grunt-cli -g
+script:
+  - npm test
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  on:
+    tags: true

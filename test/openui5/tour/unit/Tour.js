@@ -4,9 +4,7 @@ sap.ui.require([
   'sap/m/Title',
   'sap/m/Page',
   'openui5/tour/Tour',
-  'openui5/tour/TourStep',
-  'sap/ui/thirdparty/sinon',
-  'sap/ui/thirdparty/sinon-qunit'
+  'openui5/tour/TourStep'
 ], function($, Panel, Title, Page, Tour, TourStep) {
   'use strict';
 
@@ -241,10 +239,16 @@ sap.ui.require([
         tour.start();
         tour.nextStep();
         tour.previousStep();
-        assert.deepEqual(tour._getCurrentStepIndex(), 0);
-        tour.destroy();
-        view.destroy();
+
+        const done = assert.async();
+        setTimeout(function() {
+          assert.deepEqual(tour._getCurrentStepIndex(), 0);
+          done();
+          tour.destroy();
+          view.destroy();
+        }, 500);
       });
+
       test('Should fail when previous step does not exist', (assert) => {
         const view = createView();
         view.placeAt('content');

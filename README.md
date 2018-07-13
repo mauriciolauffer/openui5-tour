@@ -4,7 +4,9 @@ OpenUI5 Tour enables an user-friendly way to showcase products and features in y
 
 
 ## Demo
-You can checkout a live demo here: https://embed.plnkr.co/vVvwApRB7mKddPfGccG2/
+You can checkout a live demo here:
+
+https://cdn.rawgit.com/mauriciolauffer/openui5-tour/master/demo/webapp/index.html
 
 [<img src="openui5-tour.png">](https://raw.githubusercontent.com/mauriciolauffer/openui5-tour/master/openui5-tour.png)
 
@@ -28,20 +30,22 @@ $ npm install openui5-tour
 Add the library to *sap.ui5/dependencies/libs* and set its path in *sap.ui5/resourceRoots* in your manifest.json file, as follows:
 
 ```json
-"sap.ui5": {
-  "dependencies": {
-    "libs": {
-      "openui5.tour": {}
+{
+  "sap.ui5": {
+    "dependencies": {
+      "libs": {
+        "openui5.tour": {}
+      }
+    },
+    "resourceRoots": {
+      "openui5.tour": "./FOLDER_WHERE_YOU_PLACED_THE_LIBRARY/openui5/tour/"
     }
-  },
-  "resourceRoots": {
-    "openui5.tour": "./FOLDER_WHERE_YOU_PLACED_THE_LIBRARY/openui5/tour/"
   }
 }
 ```
 
 ### How to use
-Import openui5-tour to your UI5 controller using *sap.ui.require*:
+Import openui5-tour to your UI5 controller using *sap.ui.define* or *sap.ui.require*:
 
 ```javascript
 sap.ui.require([
