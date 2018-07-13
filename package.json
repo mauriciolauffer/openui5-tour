@@ -35,7 +35,7 @@
     "build": "ui5 build",
     "test": "karma start",
     "test-ci": "karma start karma.ci.conf",
-    "preversion": "npm test",
+    "preversion": "npm run test-ci",
     "postversion": "git push && git push --tags"
   },
   "repository": {
