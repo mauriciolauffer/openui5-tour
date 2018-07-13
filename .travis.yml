@@ -11,7 +11,7 @@ install:
   - npm install -g @ui5/cli
   - npm install
 script:
-  - npm test
+  - npm run test-ci
 deploy:
   provider: npm
   email: $NPM_EMAIL
