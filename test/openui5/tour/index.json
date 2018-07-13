@@ -5,7 +5,7 @@
     "description": "An OpenUI5 library to give a guided tour through your UI5 webapp.",
     "source": "https://github.com/mauriciolauffer/openui5-tour.git",
     "documentation": "https://github.com/mauriciolauffer/openui5-tour#readme",
-    "demo": "https://embed.plnkr.co/vVvwApRB7mKddPfGccG2/",
+    "demo": "https://cdn.rawgit.com/mauriciolauffer/openui5-tour/master/demo/webapp/index.html",
     "version": "1.0.0",
     "license": "MIT",
     "content": {
@@ -19,7 +19,7 @@
           "id": "openui5-tourPlayground",
           "name": "OpenUI5 Tour Playground",
           "description": "An interactive playground for openui5-tour",
-          "url": "https://embed.plnkr.co/vVvwApRB7mKddPfGccG2/"
+          "url": "https://cdn.rawgit.com/mauriciolauffer/openui5-tour/master/demo/webapp/index.html"
         }]
       }
     }
