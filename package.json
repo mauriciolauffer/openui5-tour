@@ -17,11 +17,12 @@
   ],
   "main": "dist/openui5/tour/library-preload.js",
   "dependencies": {
-    "@openui5/sap.m": "^1.56.3",
-    "@openui5/sap.ui.core": "^1.56.3"
+    "@openui5/sap.m": "^1.56.4",
+    "@openui5/sap.ui.core": "^1.56.4",
+    "@openui5/themelib_sap_belize": "^1.56.4"
   },
   "devDependencies": {
-    "eslint": "^5.1.0",
+    "eslint": "^5.2.0",
     "karma": "^2.0.4",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",

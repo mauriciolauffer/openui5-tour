@@ -63,7 +63,7 @@ module.exports = function(config) {
     autoWatch: true,
     useIframe: false,
     browsers: ['Chrome'],
-    reporters: ['progress', 'coverage', 'coveralls'],
+    reporters: ['progress', 'coverage'],
     reportSlowerThan: 200,
     singleRun: false
   });
