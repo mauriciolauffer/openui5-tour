@@ -7,7 +7,7 @@ sap.ui.define([], function() {
    * @namespace
    * @name openui5.tour
    * @author Mauricio Lauffer
-   * @version 0.0.12
+   * @version 0.0.13
    * @public
    */
   return sap.ui.getCore().initLibrary({
@@ -21,6 +21,6 @@ sap.ui.define([], function() {
       'openui5.tour.TourStep'
     ],
     noLibraryCSS: true,
-    version: '0.0.12'
+    version: '0.0.13'
   });
 });
