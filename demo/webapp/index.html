@@ -12,7 +12,7 @@
           data-sap-ui-compatVersion="edge" data-sap-ui-preload="async"
           data-sap-ui-resourceroots='{
           "mlauffer.demo.openui5.tour": "./",
-          "openui5.tour": "../../dist/openui5/tour"}'></script>
+          "openui5.tour": "../../dist/resources/openui5/tour"}'></script>
 </head>
 <body class="sapUiBody" role="application">
 <div id="content"></div>
@@ -20,21 +20,18 @@
   sap.ui.getCore().attachInit(function() {
     "use strict";
     sap.ui.require([
-      "sap/ui/core/Component",
       "sap/ui/core/ComponentContainer"
-    ], function (Component, ComponentContainer) {
-      Component.create({
+    ], function (ComponentContainer) {
+      let comp = new ComponentContainer({
         id: "mlauffer_tour",
         name: "mlauffer.demo.openui5.tour",
         manifest: true,
-        async: true
-      })
-        .then(function(oComponent) {
-          new ComponentContainer({
-            async: true,
-            component: oComponent
-          }).placeAt("content");
-        });
+        async: true,
+        componentCreated: function(evt) {
+          comp = evt.getParameter('component');
+        }
+      });
+      comp.placeAt('content');
     });
   });
 </script>
