@@ -4,27 +4,25 @@
     <Shell>
         <App>
             <Page id="page" title="{i18n>TITLE}">
-                <Panel id="panel1" height="300px">
+                <Toolbar id="toolbar" design="Info">
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://begin" text="{i18n>START}"  press="onStartTour" />
+                </Toolbar>
+                <Panel id="panel1" height="200px">
                     <Title text="Panel 1" />
                 </Panel>
-                <Panel id="panel2" height="300px">
+                <Panel id="panel2" height="200px" backgroundDesign="Solid">
                     <Title text="Panel 2" />
                 </Panel>
-                <Panel id="panel3" height="300px">
+                <Panel id="panel3" height="200px">
                     <Title id="title3" text="Panel 3" />
                 </Panel>
-                <Panel id="panel4" height="300px">
+                <Panel id="panel4" height="200px" backgroundDesign="Solid">
                     <Title text="Panel 4" />
                 </Panel>
-                <Panel id="panel5" height="300px">
+                <Panel id="panel5" height="200px">
                     <Title text="Panel 5" />
                 </Panel>
-                <footer>
-                    <Toolbar id="footerBar">
-                        <ToolbarSpacer />
-                        <Button icon="sap-icon://begin" text="{i18n>START}" press="onStartTour" />
-                    </Toolbar>
-                </footer>
             </Page>
         </App>
     </Shell>

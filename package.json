@@ -29,11 +29,12 @@
     "karma-coveralls": "^2.1.0",
     "karma-openui5": "^0.2.3",
     "karma-qunit": "^2.1.0",
-    "qunit": "^2.7.1"
+    "qunit": "^2.8.0"
   },
   "scripts": {
     "start": "ui5 serve",
     "build": "ui5 build",
+    "lint": "eslint ./",
     "test": "karma start",
     "test-ci": "karma start karma.ci.conf",
     "preversion": "npm run test-ci",
