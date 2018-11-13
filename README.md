@@ -6,7 +6,7 @@ OpenUI5 Tour enables an user-friendly way to showcase products and features in y
 ## Demo
 You can checkout a live demo here:
 
-https://htmlpreview.github.io/?https://github.com/mauriciolauffer/openui5-tour/blob/master/demo/webapp/index.html
+https://mauriciolauffer.github.io/openui5-tour/demo/webapp/index.html
 
 [<img src="openui5-tour.png">](https://raw.githubusercontent.com/mauriciolauffer/openui5-tour/master/openui5-tour.png)
 

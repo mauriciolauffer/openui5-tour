@@ -6,34 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Mauricio Lauffer">
   <title>OpenUI5 Tour</title>
-  <script id="sap-ui-bootstrap"
-          src="https://openui5.hana.ondemand.com/1.56.3/resources/sap-ui-core.js"
-          data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_belize"
-          data-sap-ui-compatVersion="edge" data-sap-ui-preload="async"
-          data-sap-ui-resourceroots='{
-          "mlauffer.demo.openui5.tour": "./",
-          "openui5.tour": "../../dist/resources/openui5/tour"}'></script>
 </head>
 <body class="sapUiBody" role="application">
-<div id="content"></div>
-<script>
-  sap.ui.getCore().attachInit(function() {
-    "use strict";
-    sap.ui.require([
-      "sap/ui/core/ComponentContainer"
-    ], function (ComponentContainer) {
-      let comp = new ComponentContainer({
-        id: "mlauffer_tour",
-        name: "mlauffer.demo.openui5.tour",
-        manifest: true,
-        async: true,
-        componentCreated: function(evt) {
-          comp = evt.getParameter('component');
-        }
-      });
-      comp.placeAt('content');
-    });
-  });
-</script>
+<div id="content" data-sap-ui-component data-async="true" data-manifest="true"
+     data-id="mlauffer.demo" data-name="mlauffer.demo.openui5.tour"></div>
+<script id="sap-ui-bootstrap"
+        src="https://openui5.hana.ondemand.com/1.58.4/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_belize"
+        data-sap-ui-compatVersion="edge" data-sap-ui-preload="async"
+        data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-xx-waitForTheme="true"
+        data-sap-ui-resourceroots='{
+          "mlauffer.demo.openui5.tour": "./",
+          "openui5.tour": "../../dist/resources/openui5/tour"}' async defer></script>
 </body>
 </html>
