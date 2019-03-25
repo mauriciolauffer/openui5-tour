@@ -15,7 +15,7 @@
     "intro",
     "showcase"
   ],
-  "main": "dist/openui5/tour/library-preload.js",
+  "main": "dist/resources/openui5/tour/library-preload.js",
   "dependencies": {
     "@openui5/sap.m": "^1.62.1",
     "@openui5/sap.ui.core": "^1.62.1",
