@@ -2,12 +2,13 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "qunit": true,
+    "jquery": true
   },
   "globals": {
     "sap": true,
-    "jQuery": true,
-    "QUnit": true
+    "sinon": true
   },
   "rules": {
     "comma-dangle": [2, "never"],
