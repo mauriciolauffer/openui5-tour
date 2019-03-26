@@ -1,6 +1,6 @@
 {
   "name": "openui5-tour",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "An OpenUI5 library to give a guided tour through your UI5 webapp.",
   "homepage": "https://github.com/mauriciolauffer/openui5-tour#readme",
   "author": "Mauricio Lauffer",
