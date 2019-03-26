@@ -1,8 +1,6 @@
 sap.ui.require([
   'test/unit/Tour',
-  'test/unit/TourStep',
-  'sap/ui/thirdparty/sinon',
-  'sap/ui/thirdparty/sinon-qunit'
+  'test/unit/TourStep'
 ], function() {
   'use strict';
 

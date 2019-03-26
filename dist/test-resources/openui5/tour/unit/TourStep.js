@@ -1,11 +1,12 @@
 sap.ui.require([
-  'jquery.sap.global',
   'sap/m/Title',
   'sap/m/Text',
   'sap/m/Page',
   'sap/m/PlacementType',
-  'openui5/tour/TourStep'
-], function($, Title, Text, Page, PlacementType, TourStep) {
+  'openui5/tour/Tour',
+  'openui5/tour/TourStep',
+  'test/unit/MemoryLeakCheck'
+], function(Title, Text, Page, PlacementType, Tour, TourStep, MemoryLeakCheck) {
   'use strict';
 
   let target = {};
@@ -143,5 +144,11 @@ sap.ui.require([
       });
     });
 
+
+    QUnit.module('Memory Leak Check', () => {
+      MemoryLeakCheck.checkControl('TourStep', function() {
+        return new Tour({steps: [buildTourStep(), buildTourStep()] });
+      }, true);
+    });
   });
 });

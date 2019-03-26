@@ -1,11 +1,11 @@
 sap.ui.require([
-  'jquery.sap.global',
   'sap/m/Panel',
   'sap/m/Title',
   'sap/m/Page',
   'openui5/tour/Tour',
-  'openui5/tour/TourStep'
-], function($, Panel, Title, Page, Tour, TourStep) {
+  'openui5/tour/TourStep',
+  'test/unit/MemoryLeakCheck'
+], function(Panel, Title, Page, Tour, TourStep, MemoryLeakCheck) {
   'use strict';
 
   sap.ui.jsview('mlauffer.test.view', {
@@ -119,7 +119,7 @@ sap.ui.require([
     QUnit.module('_goToStep', () => {
       test('Should close current step, set new current step and open it', (assert) => {
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
@@ -159,7 +159,7 @@ sap.ui.require([
     QUnit.module('start', () => {
       test('Should open first step and start tour', (assert) => {
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep()]
@@ -176,7 +176,7 @@ sap.ui.require([
       test('Should close current step and finish tour', (assert) => {
         const done = assert.async();
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
@@ -197,7 +197,7 @@ sap.ui.require([
     QUnit.module('nextStep', () => {
       test('Should open the next step', (assert) => {
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
@@ -210,7 +210,7 @@ sap.ui.require([
       });
       test('Should fail when next step does not exist', (assert) => {
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
@@ -231,7 +231,7 @@ sap.ui.require([
     QUnit.module('previousStep', () => {
       test('Should open the previous step', (assert) => {
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
@@ -251,7 +251,7 @@ sap.ui.require([
 
       test('Should fail when previous step does not exist', (assert) => {
         const view = createView();
-        view.placeAt('content');
+        view.placeAt('qunit-fixture');
         sap.ui.getCore().applyChanges();
         const tour = new Tour({
           steps: [createTourStep(view.byId('panel')), createTourStep(view.byId('panel'))]
@@ -266,6 +266,12 @@ sap.ui.require([
         tour.destroy();
         view.destroy();
       });
+    });
+
+    QUnit.module('Memory Leak Check', () => {
+      MemoryLeakCheck.checkControl('Tour', function() {
+        return new Tour();
+      }, true);
     });
   });
 });
