@@ -31,9 +31,11 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
     "karma-coveralls": "^2.1.0",
-    "karma-openui5": "^0.2.3",
     "karma-qunit": "^3.0.0",
-    "qunit": "^2.9.2"
+    "karma-sinon": "^1.0.5",
+    "karma-ui5": "^1.0.0-beta.2",
+    "qunit": "^2.9.2",
+    "sinon": "^7.3.0"
   },
   "scripts": {
     "start": "ui5 serve",
