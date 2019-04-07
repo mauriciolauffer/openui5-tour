@@ -21,9 +21,9 @@ sap.ui.define([
          */
         icon: {type: 'sap.ui.core.URI', group: 'Appearance', defaultValue: ''},
         /**
-         * Determines the UI5 object which will be the reference for the dialog.
+         * Determines the UI5/DOM object which will be the reference for the dialog.
          */
-        target: {type: 'sap.ui.core.Control', group: 'Behavior', defaultValue: ''},
+        target: {type: 'object', group: 'Behavior', defaultValue: ''},
         /**
          * Determines where the dialog will be placed.
          * This property only takes effect on desktop or tablet. Please see the documentation sap.m.Popover#placement.
