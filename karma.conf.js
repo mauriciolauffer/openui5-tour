@@ -4,16 +4,16 @@ module.exports = function(config) {
   config.set({
     frameworks: ['qunit', 'sinon', 'ui5'],
     ui5: {
+      mode: 'script',
       type: 'library',
       url: 'http://localhost:8080',
-      htmlrunner: false,
       config: {
-        theme: 'sap_belize',
-        language: 'en',
-        logLevel: 'WARNING',
+        animation: 'false',
         compatVersion: 'edge',
-        preload: 'async',
+        language: 'en',
         libs: 'sap.m',
+        logLevel: 'WARNING',
+        preload: 'async',
         resourceroots: {
           'openui5.tour': 'base/src/openui5/tour',
           'test.unit': 'base/test/openui5/tour/unit'
@@ -30,20 +30,6 @@ module.exports = function(config) {
         noglobals: true
       }
     },
-    files: [
-      {
-        pattern: 'src/**',
-        included: false,
-        served: true,
-        watched: true
-      },
-      {
-        pattern: 'test/openui5/tour/unit/**',
-        included: false,
-        served: true,
-        watched: true
-      }
-    ],
     preprocessors: {
       'src/**/!(thirdparty)/*.js': ['coverage']
     },
