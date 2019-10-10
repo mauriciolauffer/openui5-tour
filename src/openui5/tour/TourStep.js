@@ -4,9 +4,33 @@ sap.ui.define([
   'sap/m/PlacementType',
   'sap/m/ResponsivePopover',
   'sap/ui/core/Control'
-], function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
+],
+/**
+ * Module Dependencies
+ *
+ * @param {typeof sap.m.Button} Button UI5 button
+ * @param {typeof sap.m.ButtonType} ButtonType UI5 button type
+ * @param {typeof sap.m.PlacementType} PlacementType UI5 placement type
+ * @param {typeof sap.m.ResponsivePopover} ResponsivePopover UI5 Responsive popover
+ * @param {typeof sap.ui.core.Control} Control UI5 control to be extended
+ * @returns {object} TourStep control, an extended UI5 control
+ */
+function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
   'use strict';
 
+  /**
+   * OpenUI5 TourStep.
+   * Tour Step is a popup with the details to be displayed
+   *
+   * @author Mauricio Lauffer
+   * @version ${version}
+   *
+   * @class
+   * @namespace
+   * @name openui5.tour
+   * @public
+   * @alias openui5.tour.TourStep
+   */
   const TourStep = Control.extend('openui5.tour.TourStep', {
     metadata: {
       library: 'openui5.tour',
@@ -85,22 +109,52 @@ sap.ui.define([
     }
   };
 
+  /**
+   * Sets step as the first one in the tour
+   * 
+   * @param {boolean} isFirstStep Whether the step is the first one or not
+   * @public
+   */
   TourStep.prototype.setIsFirstStep = function (isFirstStep) {
     this._isFirstStep = (isFirstStep);
   };
 
+  /**
+   * Sets steps as the last one in the tour
+   *
+   * @param {boolean} isLastStep Whether the step is the last one or not
+   * @public
+   */
   TourStep.prototype.setIsLastStep = function (isLastStep) {
     this._isLastStep = (isLastStep);
   };
 
+  /**
+   * Sets popup as first step
+   *
+   * @param {typeof sap.m.ResponsivePopover} popup Tour step's popup
+   * @private
+   */
   TourStep.prototype._setFirstStep = function (popup) {
     popup.getBeginButton().setEnabled(false);
   };
 
+  /**
+   * Sets popup as last step
+   *
+   * @param {typeof sap.m.ResponsivePopover} popup Tour step's popup
+   * @private
+   */
   TourStep.prototype._setLastStep = function (popup) {
     this._setFinishButton(popup);
   };
 
+  /**
+   * Gets Tour Step's popup
+   *
+   * @returns {typeof sap.m.ResponsivePopover} Tour step's popup
+   * @private
+   */
   TourStep.prototype._getPopup = function() {
     if (this.getContent()) {
       this.getContent().addStyleClass('sapUiSmallMargin');
@@ -118,23 +172,52 @@ sap.ui.define([
     return popup;
   };
 
+  /**
+   * Sets finish button in the popup
+   *
+   * @param {typeof sap.m.ResponsivePopover} popup Tour step's popup
+   * @private
+   */
   TourStep.prototype._setFinishButton = function (popup) {
     const button = this._createFinishButton(popup.getId(), this._finishStep.bind(this));
     popup.setEndButton(button);
     button.setType(ButtonType.Emphasized);
   };
 
+  /**
+   * Sets next button in the popup
+   *
+   * @param {typeof sap.m.ResponsivePopover} popup Tour step's popup
+   * @private
+   */
   TourStep.prototype._setNextButton = function (popup) {
     const button = this._createNextButton(popup.getId(), this._nextStep.bind(this));
     popup.setEndButton(button);
     button.setType(ButtonType.Emphasized);
   };
 
+  /**
+   * Sets previous button in the popup
+   *
+   * @param {typeof sap.m.ResponsivePopover} popup Tour step's popup
+   * @private
+   */
   TourStep.prototype._setPreviousButton = function (popup) {
     const button = this._createPreviousButton(popup.getId(), this._previousStep.bind(this));
     popup.setBeginButton(button);
   };
 
+  /**
+   * Builds a popup
+   *
+   * @param {string} tourStepId parent's ID
+   * @param {typeof sap.m.PlacementType} placement Where popup will be placed
+   * @param {string} title Tour step's title
+   * @param {typeof sap.ui.core.URI} icon Tour step's icon
+   * @param {typeof sap.ui.core.Control} content Tour step's main content
+   * @returns {typeof sap.m.ResponsivePopover} A new popup instance
+   * @private
+   */
   TourStep.prototype._createPopup = function(tourStepId, placement, title, icon, content) {
     return new ResponsivePopover(tourStepId + '-popover', {
       modal: true,
@@ -145,24 +228,46 @@ sap.ui.define([
     });
   };
 
+  /**
+   * Builds finish button
+   *
+   * @param {string} popupId Parent's ID
+   * @param {Function} handlePress A function to handle press event
+   * @returns {typeof sap.m.Button} A new finish button instance
+   * @private
+   */
   TourStep.prototype._createFinishButton = function (popupId, handlePress) {
     return new Button(popupId + '-finishButton', {
       icon: 'sap-icon://accept',
       text: 'Done',
-      //type: ButtonType.Accept,
       press: handlePress
     });
   };
 
+  /**
+   * Builds next button
+   *
+   * @param {string} popupId Parent's ID
+   * @param {Function} handlePress A function to handle press event
+   * @returns {typeof sap.m.Button} A new next button instance
+   * @private
+   */
   TourStep.prototype._createNextButton = function (popupId, handlePress) {
     return new Button(popupId + '-nextButton', {
       icon: 'sap-icon://open-command-field',
       text: 'Next',
-      //type: ButtonType.Emphasized,
       press: handlePress
     });
   };
 
+  /**
+   * Builds previous button
+   *
+   * @param {string} popupId Parent's ID
+   * @param {Function} handlePress A function to handle press event
+   * @returns {typeof sap.m.Button} A new previous button instance
+   * @private
+   */
   TourStep.prototype._createPreviousButton = function (popupId, handlePress) {
     return new Button(popupId + '-previousButton', {
       icon: 'sap-icon://close-command-field',

@@ -1,9 +1,27 @@
 sap.ui.define([
-  'sap/m/ResponsivePopover',
   'sap/ui/core/Control'
-], function(ResponsivePopover, Control) {
+],
+/**
+ * Module Dependencies
+ *
+ * @param {typeof sap.ui.core.Control} Control UI5 control to be extended
+ * @returns {object} Tour control, an extended UI5 control
+ */
+function(Control) {
   'use strict';
 
+  /**
+   * OpenUI5 Tour.
+   *
+   * @author Mauricio Lauffer
+   * @version ${version}
+   *
+   * @class
+   * @namespace
+   * @name openui5.tour
+   * @public
+   * @alias openui5.tour.Tour
+   */
   const Tour = Control.extend('openui5.tour.Tour', {
     metadata: {
       library: 'openui5.tour',
@@ -97,7 +115,7 @@ sap.ui.define([
 
   /**
    * Returns the current step index
-   * @returns {int} Current step index
+   * @returns {number} Current step index
    * @private
    */
   Tour.prototype._getCurrentStepIndex = function() {
@@ -106,7 +124,7 @@ sap.ui.define([
 
   /**
    * Sets the current step index
-   * @param {int} stepIndex The current step index
+   * @param {number} stepIndex The current step index
    * @private
    */
   Tour.prototype._setCurrentStepIndex = function(stepIndex) {
@@ -115,7 +133,7 @@ sap.ui.define([
 
   /**
    * Validates the given step.
-   * @param {int} stepIndex The step index to be validated.
+   * @param {number} stepIndex The step index to be validated.
    * @returns {boolean} Returns if the step is valid.
    * @public
    */
@@ -128,14 +146,10 @@ sap.ui.define([
 
   /**
    * Goes to the given step. The step must exist.
-   * @param {int} stepIndex The step to go to.
+   * @param {number} stepIndex The step to go to.
    * @private
    */
   Tour.prototype._goToStep = function (stepIndex) {
-    /*this._closeStep(this._getCurrentStepIndex());
-    this._setCurrentStepIndex(stepIndex);
-    this._openStep(stepIndex);*/
-
     if (this._isValidStepIndex(stepIndex)) {
       this.getSteps()[this._getCurrentStepIndex()].close();
       this._setCurrentStepIndex(stepIndex);
