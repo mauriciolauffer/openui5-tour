@@ -1,3 +1,7 @@
+/*
+ * ${copyright}
+ */
+
 sap.ui.define([], function() {
   'use strict';
 
@@ -14,13 +18,13 @@ sap.ui.define([], function() {
     name: 'openui5.tour',
     dependencies: [
       'sap.ui.core',
-      'sap.m'
+      'sap.m',
     ],
     controls: [
       'openui5.tour.Tour',
-      'openui5.tour.TourStep'
+      'openui5.tour.TourStep',
     ],
     noLibraryCSS: true,
-    version: '${version}'
+    version: '${version}',
   });
 });

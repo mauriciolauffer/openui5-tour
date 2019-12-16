@@ -1,9 +1,33 @@
+/*
+ * openui5-tour
+ * (c) Copyright 2017-2019 Mauricio Lauffer
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
+
 sap.ui.define([
-  'sap/m/ResponsivePopover',
-  'sap/ui/core/Control'
-], function(ResponsivePopover, Control) {
+  'sap/ui/core/Control',
+],
+/**
+ * Module Dependencies
+ *
+ * @param {typeof sap.ui.core.Control} Control UI5 control to be extended
+ * @returns {object} Tour control, an extended UI5 control
+ */
+function(Control) {
   'use strict';
 
+  /**
+   * OpenUI5 Tour.
+   *
+   * @author Mauricio Lauffer
+   * @version 0.0.18
+   *
+   * @class
+   * @namespace
+   * @name openui5.tour
+   * @public
+   * @alias openui5.tour.Tour
+   */
   const Tour = Control.extend('openui5.tour.Tour', {
     metadata: {
       library: 'openui5.tour',
@@ -13,42 +37,42 @@ sap.ui.define([
         /**
          * The tour steps to be included in the control.
          */
-        steps: {type: 'openui5.tour.TourStep', multiple: true, singularName: 'step'}
+        steps: {type: 'openui5.tour.TourStep', multiple: true, singularName: 'step'},
       },
       events: {
         /**
          * The started event is fired when the tour is started.
          */
         started: {
-          parameters: {}
+          parameters: {},
         },
         /**
          * The completed event is fired when the tour is completed.
          */
         completed: {
-          parameters: {}
+          parameters: {},
         },
         /**
          * The nextStep event is fired every time the next step is called.
          */
         nextStep: {
-          parameters: {}
+          parameters: {},
         },
         /**
          * The previousStep event is fired every time the previous step is called.
          */
         previousStep: {
-          parameters: {}
-        }
-      }
-    }
+          parameters: {},
+        },
+      },
+    },
   });
 
   /**
    * Initialize tour object
    * @public
    */
-  Tour.prototype.init = function () {
+  Tour.prototype.init = function() {
     this._currentStepIndex = 0;
   };
 
@@ -70,7 +94,7 @@ sap.ui.define([
    */
   Tour.prototype.complete = function() {
     this.getSteps()[this._getCurrentStepIndex()].close();
-    //this._closeStep(this._getCurrentStepIndex());
+    // this._closeStep(this._getCurrentStepIndex());
     this._setCurrentStepIndex(0);
     this.fireCompleted();
   };
@@ -97,7 +121,7 @@ sap.ui.define([
 
   /**
    * Returns the current step index
-   * @returns {int} Current step index
+   * @returns {number} Current step index
    * @private
    */
   Tour.prototype._getCurrentStepIndex = function() {
@@ -106,7 +130,7 @@ sap.ui.define([
 
   /**
    * Sets the current step index
-   * @param {int} stepIndex The current step index
+   * @param {number} stepIndex The current step index
    * @private
    */
   Tour.prototype._setCurrentStepIndex = function(stepIndex) {
@@ -115,11 +139,11 @@ sap.ui.define([
 
   /**
    * Validates the given step.
-   * @param {int} stepIndex The step index to be validated.
+   * @param {number} stepIndex The step index to be validated.
    * @returns {boolean} Returns if the step is valid.
    * @public
    */
-  Tour.prototype._isValidStepIndex = function (stepIndex) {
+  Tour.prototype._isValidStepIndex = function(stepIndex) {
     if (!this.getSteps()[stepIndex]) {
       throw new Error('Tour does not contain step index #' + stepIndex);
     }
@@ -128,14 +152,10 @@ sap.ui.define([
 
   /**
    * Goes to the given step. The step must exist.
-   * @param {int} stepIndex The step to go to.
+   * @param {number} stepIndex The step to go to.
    * @private
    */
-  Tour.prototype._goToStep = function (stepIndex) {
-    /*this._closeStep(this._getCurrentStepIndex());
-    this._setCurrentStepIndex(stepIndex);
-    this._openStep(stepIndex);*/
-
+  Tour.prototype._goToStep = function(stepIndex) {
     if (this._isValidStepIndex(stepIndex)) {
       this.getSteps()[this._getCurrentStepIndex()].close();
       this._setCurrentStepIndex(stepIndex);

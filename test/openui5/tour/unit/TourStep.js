@@ -5,7 +5,7 @@ sap.ui.require([
   'sap/m/PlacementType',
   'openui5/tour/Tour',
   'openui5/tour/TourStep',
-  'test/unit/MemoryLeakCheck'
+  'test/unit/MemoryLeakCheck',
 ], function(Title, Text, Page, PlacementType, Tour, TourStep, MemoryLeakCheck) {
   'use strict';
 
@@ -20,22 +20,22 @@ sap.ui.require([
 
   function buildTourStep() {
     return new TourStep({
-      content: new Text({ text: 'Hey! It is a tour!' }),
+      content: new Text({text: 'Hey! It is a tour!'}),
       target: target,
-      title: 'Test TourStep'
+      title: 'Test TourStep',
     });
   }
 
-  const { test } = QUnit;
+  const {test} = QUnit;
 
   QUnit.module('TourStep', {
-    after: function () {
+    after: function() {
       target.destroy();
       target = null;
     },
-    before: function () {
+    before: function() {
       target = buildTarget();
-    }
+    },
   }, function() {
     QUnit.module('constructor', () => {
       test('Should instantiate the control with default values', (assert) => {
@@ -61,7 +61,6 @@ sap.ui.require([
         try {
           const tourStep = new TourStep();
           tourStep.open();
-
         } catch (err) {
           errorRaised = err;
         }
@@ -147,7 +146,7 @@ sap.ui.require([
 
     QUnit.module('Memory Leak Check', () => {
       MemoryLeakCheck.checkControl('TourStep', function() {
-        return new Tour({steps: [buildTourStep(), buildTourStep()] });
+        return new Tour({steps: [buildTourStep(), buildTourStep()]});
       }, true);
     });
   });

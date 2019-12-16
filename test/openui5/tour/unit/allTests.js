@@ -1,6 +1,6 @@
 sap.ui.require([
   'test/unit/Tour',
-  'test/unit/TourStep'
+  'test/unit/TourStep',
 ], function() {
   'use strict';
 
