@@ -20,7 +20,7 @@ function(Control) {
    * OpenUI5 Tour.
    *
    * @author Mauricio Lauffer
-   * @version 0.0.19
+   * @version 0.0.20
    *
    * @class
    * @namespace
