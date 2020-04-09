@@ -1,11 +1,11 @@
 /*
  * openui5-tour
- * (c) Copyright 2017-2019 Mauricio Lauffer
+ * (c) Copyright 2017-2020 Mauricio Lauffer
  * Licensed under the MIT license. See LICENSE file in the project root for full license information.
  */
 
 sap.ui.define([
-  'sap/ui/core/Control',
+  'sap/ui/core/Control'
 ],
 /**
  * Module Dependencies
@@ -37,35 +37,35 @@ function(Control) {
         /**
          * The tour steps to be included in the control.
          */
-        steps: {type: 'openui5.tour.TourStep', multiple: true, singularName: 'step'},
+        steps: {type: 'openui5.tour.TourStep', multiple: true, singularName: 'step'}
       },
       events: {
         /**
          * The started event is fired when the tour is started.
          */
         started: {
-          parameters: {},
+          parameters: {}
         },
         /**
          * The completed event is fired when the tour is completed.
          */
         completed: {
-          parameters: {},
+          parameters: {}
         },
         /**
          * The nextStep event is fired every time the next step is called.
          */
         nextStep: {
-          parameters: {},
+          parameters: {}
         },
         /**
          * The previousStep event is fired every time the previous step is called.
          */
         previousStep: {
-          parameters: {},
-        },
-      },
-    },
+          parameters: {}
+        }
+      }
+    }
   });
 
   /**

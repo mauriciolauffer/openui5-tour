@@ -16,10 +16,10 @@ module.exports = function(config) {
         preload: 'async',
         resourceroots: {
           'openui5.tour': 'base/src/openui5/tour',
-          'test.unit': 'base/test/openui5/tour/unit',
-        },
+          'test.unit': 'base/test/openui5/tour/unit'
+        }
       },
-      tests: ['test/unit/allTests'],
+      tests: ['test/unit/allTests']
     },
     client: {
       useIframe: false,
@@ -27,11 +27,11 @@ module.exports = function(config) {
         showUI: true,
         testTimeout: 20000, // 20 secs
         autostart: false,
-        noglobals: true,
-      },
+        noglobals: true
+      }
     },
     preprocessors: {
-      'src/**/!(thirdparty)/*.js': ['coverage'],
+      'src/**/!(thirdparty)/*.js': ['coverage']
     },
     coverageReporter: {
       type: 'lcov',
@@ -41,14 +41,14 @@ module.exports = function(config) {
           statements: 80,
           branches: 80,
           functions: 80,
-          lines: 80,
-        },
-      },
+          lines: 80
+        }
+      }
     },
     autoWatch: true,
     browsers: ['Chrome'],
     reporters: ['progress', 'coverage'],
     reportSlowerThan: 200,
-    singleRun: false,
+    singleRun: false
   });
 };

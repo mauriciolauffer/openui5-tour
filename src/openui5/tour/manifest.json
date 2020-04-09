@@ -20,7 +20,9 @@
       "minUI5Version": "1.30.0",
       "libs": {
         "sap.ui.core": {},
-        "sap.m": {}
+        "sap.m": {
+          "lazy": true
+        }
       }
     },
     "contentDensities": {

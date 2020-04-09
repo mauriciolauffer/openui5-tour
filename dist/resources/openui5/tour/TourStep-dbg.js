@@ -1,6 +1,6 @@
 /*
  * openui5-tour
- * (c) Copyright 2017-2019 Mauricio Lauffer
+ * (c) Copyright 2017-2020 Mauricio Lauffer
  * Licensed under the MIT license. See LICENSE file in the project root for full license information.
  */
 
@@ -9,7 +9,7 @@ sap.ui.define([
   'sap/m/ButtonType',
   'sap/m/PlacementType',
   'sap/m/ResponsivePopover',
-  'sap/ui/core/Control',
+  'sap/ui/core/Control'
 ],
 /**
  * Module Dependencies
@@ -58,7 +58,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
          * Determines where the dialog will be placed.
          * This property only takes effect on desktop or tablet. Please see the documentation sap.m.Popover#placement.
          */
-        placement: {type: 'sap.m.PlacementType', group: 'Behavior', defaultValue: PlacementType.PreferredTopOrFlip},
+        placement: {type: 'sap.m.PlacementType', group: 'Behavior', defaultValue: PlacementType.PreferredTopOrFlip}
       },
       defaultAggregation: 'content',
       aggregations: {
@@ -69,9 +69,9 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
         /**
          * The internal popup instance which is either a dialog on phone or a popover on the rest of platforms
          */
-        _popup: {type: 'sap.ui.core.Control', multiple: false, visibility: 'hidden'},
-      },
-    },
+        _popup: {type: 'sap.ui.core.Control', multiple: false, visibility: 'hidden'}
+      }
+    }
   });
 
   /**
@@ -230,7 +230,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
       placement: placement,
       title: title,
       icon: icon,
-      content: content,
+      content: content
     });
   };
 
@@ -246,7 +246,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
     return new Button(popupId + '-finishButton', {
       icon: 'sap-icon://accept',
       text: 'Done',
-      press: handlePress,
+      press: handlePress
     });
   };
 
@@ -262,7 +262,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
     return new Button(popupId + '-nextButton', {
       icon: 'sap-icon://open-command-field',
       text: 'Next',
-      press: handlePress,
+      press: handlePress
     });
   };
 
@@ -278,7 +278,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
     return new Button(popupId + '-previousButton', {
       icon: 'sap-icon://close-command-field',
       text: 'Back',
-      press: handlePress,
+      press: handlePress
     });
   };
 

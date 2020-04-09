@@ -1,5 +1,5 @@
 sap.ui.define([
-  'sap/ui/core/Control',
+  'sap/ui/core/Control'
 ], function(Control) {
   'use strict';
 
@@ -28,7 +28,7 @@ sap.ui.define([
     },
     stopPlugin: function() {
       MemoryLeakCheck.oCore = undefined;
-    },
+    }
   });
 
 
@@ -208,7 +208,7 @@ sap.ui.define([
             oControl.destroy();
           }
         }
-      },
+      }
     });
 
     // sanity check to make sure this is actually testing something

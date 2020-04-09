@@ -2,7 +2,7 @@ sap.ui.require([
   'sap/ui/core/mvc/XMLView',
   'openui5/tour/Tour',
   'openui5/tour/TourStep',
-  'test/unit/MemoryLeakCheck',
+  'test/unit/MemoryLeakCheck'
 ], function(XMLView, Tour, TourStep, MemoryLeakCheck) {
   'use strict';
 
@@ -13,7 +13,7 @@ sap.ui.require([
     return new TourStep({
       content: new sap.m.Text({text: 'Hey! It is a tour!'}),
       target: target,
-      title: 'Tour step...',
+      title: 'Tour step...'
     });
   }
 
@@ -22,7 +22,7 @@ sap.ui.require([
   QUnit.module('Tour', {
     beforeEach: function() {
       return XMLView.create({
-        definition: viewDefinition,
+        definition: viewDefinition
       })
           .then((viewCreated) => {
             viewForTest = viewCreated;
@@ -33,7 +33,7 @@ sap.ui.require([
     afterEach: function() {
       viewForTest.destroy();
       viewForTest = null;
-    },
+    }
   }, function() {
     QUnit.module('constructor', () => {
       test('Should instantiate the control', (assert) => {
@@ -43,7 +43,7 @@ sap.ui.require([
       });
       test('Should instantiate the control with 2 steps', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(), createTourStep()],
+          steps: [createTourStep(), createTourStep()]
         });
         assert.deepEqual(tour._getCurrentStepIndex(), 0);
         assert.deepEqual(tour.getSteps().length, 2);
@@ -69,7 +69,7 @@ sap.ui.require([
     QUnit.module('_isValidStepIndex', () => {
       test('Should return step index is valid', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(), createTourStep()],
+          steps: [createTourStep(), createTourStep()]
         });
         assert.deepEqual(tour._isValidStepIndex(1), true);
       });
@@ -86,7 +86,7 @@ sap.ui.require([
 
       test('Should return step index is invalid for a lower value', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(), createTourStep()],
+          steps: [createTourStep(), createTourStep()]
         });
         try {
           tour._isValidStepIndex(-1);
@@ -98,7 +98,7 @@ sap.ui.require([
 
       test('Should return step index is invalid for a higher value', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(), createTourStep()],
+          steps: [createTourStep(), createTourStep()]
         });
         try {
           tour._isValidStepIndex(3);
@@ -112,7 +112,7 @@ sap.ui.require([
     QUnit.module('_goToStep', () => {
       test('Should close current step, set new current step and open it', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))]
         });
         tour._goToStep(1);
         const step = tour.getSteps()[1];
@@ -126,7 +126,7 @@ sap.ui.require([
     QUnit.module('_setFirstStep', () => {
       test('Should set the first step', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(), createTourStep()],
+          steps: [createTourStep(), createTourStep()]
         });
         tour._setFirstStep();
         assert.deepEqual(tour.getSteps()[0]._isFirstStep, true);
@@ -137,7 +137,7 @@ sap.ui.require([
     QUnit.module('_setLastStep', () => {
       test('Should set the last step', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(), createTourStep()],
+          steps: [createTourStep(), createTourStep()]
         });
         tour._setLastStep();
         assert.deepEqual(tour.getSteps()[0]._isLastStep, false);
@@ -148,7 +148,7 @@ sap.ui.require([
     QUnit.module('start', () => {
       test('Should open first step and start tour', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep()],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep()]
         });
         tour.start();
         assert.deepEqual(tour._getCurrentStepIndex(), 0);
@@ -161,7 +161,7 @@ sap.ui.require([
       test('Should close current step and finish tour', (assert) => {
         const done = assert.async();
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))]
         });
         tour.start();
         tour.nextStep();
@@ -178,7 +178,7 @@ sap.ui.require([
     QUnit.module('nextStep', () => {
       test('Should open the next step', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))]
         });
         tour.start();
         tour.nextStep();
@@ -187,7 +187,7 @@ sap.ui.require([
       });
       test('Should fail when next step does not exist', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))]
         });
         tour.start();
         try {
@@ -204,7 +204,7 @@ sap.ui.require([
     QUnit.module('previousStep', () => {
       test('Should open the previous step', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))]
         });
         tour.start();
         tour.nextStep();
@@ -220,7 +220,7 @@ sap.ui.require([
 
       test('Should fail when previous step does not exist', (assert) => {
         const tour = new Tour({
-          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))],
+          steps: [createTourStep(viewForTest.byId('panel')), createTourStep(viewForTest.byId('panel'))]
         });
         tour.start();
         try {

@@ -27,7 +27,7 @@
   "devDependencies": {
     "@openui5/ts-types": "^1.60.5",
     "eslint": "^6.8.0",
-    "eslint-config-mlauffer-ui5": "0.0.1",
+    "eslint-config-mlauffer-ui5": "0.0.2",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.1",
@@ -42,6 +42,7 @@
     "start": "ui5 serve",
     "build": "ui5 build --clean-dist",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "test": "karma start",
     "test-ci": "karma start karma.ci.conf",
     "preversion": "npm run test-ci",
