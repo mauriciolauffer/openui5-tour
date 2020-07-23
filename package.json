@@ -17,8 +17,7 @@
   ],
   "main": "dist/resources/openui5/tour/library-preload.js",
   "files": [
-    "dist",
-    "demo"
+    "dist"
   ],
   "dependencies": {},
   "devDependencies": {
