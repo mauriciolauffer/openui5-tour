@@ -60,8 +60,8 @@ sap.ui.require([
     QUnit.module('_setCurrentStepIndex', () => {
       test('Should set the current step index', (assert) => {
         const tour = new Tour();
-        tour._setCurrentStepIndex(10);
-        assert.deepEqual(tour._getCurrentStepIndex(), 10);
+        tour._setCurrentStepIndex(20);
+        assert.deepEqual(tour._getCurrentStepIndex(), 20);
       });
     });
 
@@ -77,7 +77,7 @@ sap.ui.require([
         const tour = new Tour();
         try {
           tour._isValidStepIndex(0);
-          assert.deepEqual(true, false, 'Should never be executed!');
+          assert.deepEqual(true, false, 'Should never be executed!'); // eslint-disable-line
         } catch (e) {
           assert.deepEqual(e instanceof Error, true);
         }
@@ -89,7 +89,7 @@ sap.ui.require([
         });
         try {
           tour._isValidStepIndex(-1);
-          assert.deepEqual(true, false, 'Should never be executed!');
+          assert.deepEqual(true, false, 'Should never be executed!'); // eslint-disable-line
         } catch (e) {
           assert.deepEqual(e instanceof Error, true);
         }
@@ -101,7 +101,7 @@ sap.ui.require([
         });
         try {
           tour._isValidStepIndex(3);
-          assert.deepEqual(true, false, 'Should never be executed!');
+          assert.deepEqual(true, false, 'Should never be executed!'); // eslint-disable-line
         } catch (e) {
           assert.deepEqual(e instanceof Error, true);
         }

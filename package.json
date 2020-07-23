@@ -33,8 +33,8 @@
   "scripts": {
     "start": "ui5 serve",
     "build": "ui5 build --clean-dest",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
+    "lint": "eslint src && eslint test",
+    "lint:fix": "eslint src --fix && eslint test --fix",
     "test": "karma start",
     "test-ci": "karma start karma.ci.conf",
     "preversion": "npm run test-ci",

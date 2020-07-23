@@ -4,8 +4,8 @@ sap.ui.define([
   'openui5/tour/Tour',
   'openui5/tour/TourStep'
 ],
-function (MemoryLeakCheck, Text, Tour, TourStep) {
-  "use strict";
+function(MemoryLeakCheck, Text, Tour, TourStep) {
+  'use strict';
 
   function buildTarget() {
     const target = new Text();
@@ -22,9 +22,9 @@ function (MemoryLeakCheck, Text, Tour, TourStep) {
     });
   }
 
-  let target = buildTarget();
+  const target = buildTarget();
 
-  MemoryLeakCheck.checkControl("openui5.tour.TourStep", function () {
+  MemoryLeakCheck.checkControl('openui5.tour.TourStep', function() {
     return new Tour({steps: [buildTourStep(), buildTourStep()]});
   }, null, true);
 });

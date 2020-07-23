@@ -83,7 +83,7 @@ sap.ui.require([
 
 
     QUnit.module('setIsFirstStep', () => {
-      test('Should set control as First Step', (assert) => {
+      test('Should set control as First Step', (assert) => { // eslint-disable-line
         const tourStep = buildTourStep();
         tourStep.setIsFirstStep(true);
         assert.deepEqual(tourStep._isFirstStep, true);
@@ -93,17 +93,7 @@ sap.ui.require([
 
 
     QUnit.module('setIsLastStep', () => {
-      test('Should set control as First Step', (assert) => {
-        const tourStep = buildTourStep();
-        tourStep.setIsLastStep(true);
-        assert.deepEqual(tourStep._isLastStep, true);
-        tourStep.destroy();
-      });
-    });
-
-
-    QUnit.module('setIsLastStep', () => {
-      test('Should set control as First Step', (assert) => {
+      test('Should set control as First Step', (assert) => { // eslint-disable-line
         const tourStep = buildTourStep();
         tourStep.setIsLastStep(true);
         assert.deepEqual(tourStep._isLastStep, true);
