@@ -1,4 +1,4 @@
-specVersion: '2.0'
+specVersion: '2.1'
 metadata:
   name: openui5-tour
   copyright: |-
@@ -6,3 +6,10 @@ metadata:
      * (c) Copyright 2017-${currentYear} Mauricio Lauffer
      * Licensed under the MIT license. See LICENSE file in the project root for full license information.
 type: library
+framework:
+  name: OpenUI5
+  version: 1.80.0
+  libraries:
+    - name: sap.ui.core
+    - name: sap.m
+      development: true

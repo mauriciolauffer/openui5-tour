@@ -1,9 +1,8 @@
 sap.ui.require([
   'sap/ui/core/mvc/XMLView',
   'openui5/tour/Tour',
-  'openui5/tour/TourStep',
-  'test/unit/MemoryLeakCheck'
-], function(XMLView, Tour, TourStep, MemoryLeakCheck) {
+  'openui5/tour/TourStep'
+], function(XMLView, Tour, TourStep) {
   'use strict';
 
   let viewForTest = {};
@@ -231,12 +230,6 @@ sap.ui.require([
         }
         tour.destroy();
       });
-    });
-
-    QUnit.module('Memory Leak Check', () => {
-      MemoryLeakCheck.checkControl('Tour', function() {
-        return new Tour();
-      }, true);
     });
   });
 });
