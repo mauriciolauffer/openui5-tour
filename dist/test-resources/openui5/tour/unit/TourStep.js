@@ -1,12 +1,9 @@
 sap.ui.require([
-  'sap/m/Title',
   'sap/m/Text',
-  'sap/m/Page',
   'sap/m/PlacementType',
   'openui5/tour/Tour',
-  'openui5/tour/TourStep',
-  'test/unit/MemoryLeakCheck'
-], function(Title, Text, Page, PlacementType, Tour, TourStep, MemoryLeakCheck) {
+  'openui5/tour/TourStep'
+], function(Text, PlacementType, Tour, TourStep) {
   'use strict';
 
   let target = {};
@@ -86,7 +83,7 @@ sap.ui.require([
 
 
     QUnit.module('setIsFirstStep', () => {
-      test('Should set control as First Step', (assert) => {
+      test('Should set control as First Step', (assert) => { // eslint-disable-line
         const tourStep = buildTourStep();
         tourStep.setIsFirstStep(true);
         assert.deepEqual(tourStep._isFirstStep, true);
@@ -96,17 +93,7 @@ sap.ui.require([
 
 
     QUnit.module('setIsLastStep', () => {
-      test('Should set control as First Step', (assert) => {
-        const tourStep = buildTourStep();
-        tourStep.setIsLastStep(true);
-        assert.deepEqual(tourStep._isLastStep, true);
-        tourStep.destroy();
-      });
-    });
-
-
-    QUnit.module('setIsLastStep', () => {
-      test('Should set control as First Step', (assert) => {
+      test('Should set control as First Step', (assert) => { // eslint-disable-line
         const tourStep = buildTourStep();
         tourStep.setIsLastStep(true);
         assert.deepEqual(tourStep._isLastStep, true);
@@ -141,13 +128,6 @@ sap.ui.require([
         assert.deepEqual(popup.getEndButton().getEnabled(), true);
         tourStep.destroy();
       });
-    });
-
-
-    QUnit.module('Memory Leak Check', () => {
-      MemoryLeakCheck.checkControl('TourStep', function() {
-        return new Tour({steps: [buildTourStep(), buildTourStep()]});
-      }, true);
     });
   });
 });

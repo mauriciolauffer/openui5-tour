@@ -29,7 +29,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
    * Tour Step is a popup with the details to be displayed
    *
    * @author Mauricio Lauffer
-   * @version 0.0.20
+   * @version 0.0.21
    *
    * @class
    * @namespace
