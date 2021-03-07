@@ -1,6 +1,6 @@
 /*
  * openui5-tour
- * (c) Copyright 2017-2020 Mauricio Lauffer
+ * (c) Copyright 2017-2021 Mauricio Lauffer
  * Licensed under the MIT license. See LICENSE file in the project root for full license information.
  */
 

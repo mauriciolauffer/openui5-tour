@@ -2,7 +2,10 @@
  * ${copyright}
  */
 
-sap.ui.define([], function() {
+sap.ui.define([
+  'sap/ui/core/library',
+  'sap/m'
+], function() {
   'use strict';
 
   /**
@@ -17,7 +20,8 @@ sap.ui.define([], function() {
   return sap.ui.getCore().initLibrary({
     name: 'openui5.tour',
     dependencies: [
-      'sap.ui.core'
+      'sap.ui.core',
+      'sap.m'
     ],
     controls: [
       'openui5.tour.Tour',
