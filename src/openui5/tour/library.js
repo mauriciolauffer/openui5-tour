@@ -4,7 +4,7 @@
 
 sap.ui.define([
   'sap/ui/core/library',
-  'sap/m'
+  'sap/m/library'
 ], function() {
   'use strict';
 
