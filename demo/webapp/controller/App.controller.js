@@ -1,3 +1,5 @@
+'use strict';
+
 sap.ui.define([
   'sap/m/Button',
   'sap/m/MessageToast',
@@ -7,8 +9,6 @@ sap.ui.define([
   'openui5/tour/Tour',
   'openui5/tour/TourStep'
 ], function(Button, MessageToast, PlacementType, Text, Controller, Tour, TourStep) {
-  'use strict';
-
   return Controller.extend('mlauffer.demo.openui5.tour.controller.App', {
     _tour: null,
 

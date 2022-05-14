@@ -1,3 +1,5 @@
+'use strict';
+
 sap.ui.define([
   'sap/ui/qunit/utils/MemoryLeakCheck',
   'sap/m/Text',
@@ -5,8 +7,9 @@ sap.ui.define([
   'openui5/tour/TourStep'
 ],
 function(MemoryLeakCheck, Text, Tour, TourStep) {
-  'use strict';
-
+  /**
+   *
+   */
   function buildTarget() {
     const target = new Text();
     target.placeAt('qunit-fixture');
@@ -14,6 +17,9 @@ function(MemoryLeakCheck, Text, Tour, TourStep) {
     return target;
   }
 
+  /**
+   *
+   */
   function buildTourStep() {
     return new TourStep({
       content: new Text({text: 'Hey! It is a tour!'}),

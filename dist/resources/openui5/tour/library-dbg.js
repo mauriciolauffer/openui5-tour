@@ -1,15 +1,23 @@
+'use strict';
+
 /*
  * openui5-tour
- * (c) Copyright 2017-2021 Mauricio Lauffer
+ * (c) Copyright 2017-2022 Mauricio Lauffer
  * Licensed under the MIT license. See LICENSE file in the project root for full license information.
  */
 
 sap.ui.define([
+  'sap/ui/core/Core',
   'sap/ui/core/library',
   'sap/m/library'
-], function() {
-  'use strict';
-
+],
+/**
+ * Module Dependencies
+ *
+ * @param {sap.ui.core.Core} Core - sap.ui.core.Core
+ * @returns {object} openui5.tour library
+ */
+function(Core) {
   /**
    * OpenUI5 library: openui5.tour
    *
@@ -19,7 +27,7 @@ sap.ui.define([
    * @version 0.0.27
    * @public
    */
-  return sap.ui.getCore().initLibrary({
+  Core.initLibrary({
     name: 'openui5.tour',
     dependencies: [
       'sap.ui.core',
@@ -32,4 +40,6 @@ sap.ui.define([
     noLibraryCSS: true,
     version: '0.0.27'
   });
+
+  return openui5.tour; // eslint-disable-line
 });

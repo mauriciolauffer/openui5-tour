@@ -1,13 +1,17 @@
+'use strict';
+
 sap.ui.require([
   'sap/ui/core/mvc/XMLView',
   'openui5/tour/Tour',
   'openui5/tour/TourStep'
 ], function(XMLView, Tour, TourStep) {
-  'use strict';
-
   let viewForTest = {};
   const viewDefinition = '<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"><Page id="page"><Panel id="panel"><Title text="Title 1"/></Panel></Page></mvc:View>';
 
+  /**
+   *
+   * @param target
+   */
   function createTourStep(target) {
     return new TourStep({
       content: new sap.m.Text({text: 'Hey! It is a tour!'}),

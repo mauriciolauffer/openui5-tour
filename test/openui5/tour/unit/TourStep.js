@@ -1,13 +1,16 @@
+'use strict';
+
 sap.ui.require([
   'sap/m/Text',
   'sap/m/PlacementType',
   'openui5/tour/Tour',
   'openui5/tour/TourStep'
 ], function(Text, PlacementType, Tour, TourStep) {
-  'use strict';
-
   let target = {};
 
+  /**
+   *
+   */
   function buildTarget() {
     const target = new Text();
     target.placeAt('content');
@@ -15,6 +18,9 @@ sap.ui.require([
     return target;
   }
 
+  /**
+   *
+   */
   function buildTourStep() {
     return new TourStep({
       content: new Text({text: 'Hey! It is a tour!'}),
