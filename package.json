@@ -22,25 +22,25 @@
     "ui5.yaml"
   ],
   "devDependencies": {
-    "@openui5/ts-types": "^1.60.5",
-    "eslint": "^7.21.0",
-    "eslint-config-mlauffer-ui5": "0.0.4",
-    "karma": "^6.1.1",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-coverage": "^2.0.3",
+    "@microsoft/eslint-formatter-sarif": "^3.0.0",
+    "@openui5/ts-types": "^1.101.0",
+    "eslint": "^8.15.0",
+    "eslint-config-mlauffer-ui5": "^0.3.2",
+    "karma": "^6.3.20",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "^2.2.0",
     "karma-coveralls": "^2.1.0",
-    "karma-ui5": "^2.3.3"
+    "karma-ui5": "^2.4.0"
   },
   "scripts": {
     "start": "ui5 serve",
+    "start:dist": "ui5 serve --config ui5-dist.yaml",
     "build": "ui5 build --clean-dest",
-    "lint": "eslint src && eslint test",
-    "lint-fix": "eslint src --fix && eslint test --fix",
+    "lint": "eslint src test demo",
+    "lint:fix": "eslint src test demo --fix",
+    "lint:ci": "eslint src test -f @microsoft/eslint-formatter-sarif -o target/eslint.sarif",
     "test": "karma start",
-    "test-ci": "karma start karma.ci.conf",
-    "preversion": "npm run test-ci",
-    "version": "npm run build && git add -A dist",
-    "postversion": "git push && git push --tags"
+    "test:ci": "karma start karma.ci.conf"
   },
   "repository": {
     "type": "git",

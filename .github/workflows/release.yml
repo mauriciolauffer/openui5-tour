@@ -1,0 +1,26 @@
+name: release
+on:
+  push:
+    branches: [master, main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v3
+        with:
+          release-type: node
+          package-name: openui5-tour
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+        if: ${{ steps.release.outputs.release_created }}
+      - run: npm ci --ignore-scripts
+        if: ${{ steps.release.outputs.release_created }}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: ${{ steps.release.outputs.release_created }}
