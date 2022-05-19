@@ -1,9 +1,6 @@
 # openui5-tour
 
-![Travis (.org)](https://img.shields.io/travis/mauriciolauffer/openui5-tour)
-[![npm](https://img.shields.io/npm/v/openui5-tour)](https://www.npmjs.com/package/openui5-tour)
-![NPM](https://img.shields.io/npm/l/openui5-tour)
-[![linkedin-shield](https://img.shields.io/badge/LinkedIn-black?style=flat-square&logo=linkedin&colorB=555)](https://www.linkedin.com/in/mauriciolauffer)
+[![npm](https://img.shields.io/npm/v/openui5-tour)](https://www.npmjs.com/package/openui5-tour) [![test](https://github.com/mauriciolauffer/openui5-tour/actions/workflows/test.yml/badge.svg)](https://github.com/mauriciolauffer/openui5-tour/actions/workflows/test.yml)
 
 An OpenUI5 Control which helps developers to create a step-by-step guided tour through their UI5 apps.
 OpenUI5 Tour enables an user-friendly way to showcase products and features in your website.
