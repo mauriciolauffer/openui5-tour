@@ -9,23 +9,21 @@ sap.ui.define([
 ],
 /**
  * Module Dependencies
- *
  * @param {sap.ui.core.Control} Control UI5 control to be extended
  * @returns {object} Tour control, an extended UI5 control
  */
 function(Control) {
   /**
    * OpenUI5 Tour.
-   *
+   * @param {string} [sId] ID for the new control, generated automatically if no ID is given
+   * @param {object} [mSettings] Initial settings for the new control
+   * @class
+   * @alias openui5.tour.Tour
    * @author Mauricio Lauffer
    * @version ${version}
-   * @class
-   * @namespace
-   * @name openui5.tour
    * @public
-   * @alias openui5.tour.Tour
    */
-  const Tour = Control.extend('openui5.tour.Tour', {
+  const Tour = Control.extend('openui5.tour.Tour', /** @lends openui5.tour.Tour.prototype */{
     metadata: {
       library: 'openui5.tour',
       properties: {},
@@ -67,7 +65,6 @@ function(Control) {
 
   /**
    * Initialize tour object
-   *
    * @public
    */
   Tour.prototype.init = function() {
@@ -76,7 +73,6 @@ function(Control) {
 
   /**
    * Starts the tour, opens dialog step 0
-   *
    * @public
    */
   Tour.prototype.start = function() {
@@ -89,7 +85,6 @@ function(Control) {
 
   /**
    * Completes tour object, closes dialog step
-   *
    * @public
    */
   Tour.prototype.complete = function() {
@@ -101,7 +96,6 @@ function(Control) {
 
   /**
    * Goes to the next step.
-   *
    * @public
    */
   Tour.prototype.nextStep = function() {
@@ -112,7 +106,6 @@ function(Control) {
 
   /**
    * Goes to the previous step.
-   *
    * @public
    */
   Tour.prototype.previousStep = function() {
@@ -123,7 +116,6 @@ function(Control) {
 
   /**
    * Returns the current step index
-   *
    * @returns {number} Current step index
    * @private
    */
@@ -133,7 +125,6 @@ function(Control) {
 
   /**
    * Sets the current step index
-   *
    * @param {number} stepIndex The current step index
    * @private
    */
@@ -143,7 +134,6 @@ function(Control) {
 
   /**
    * Validates the given step.
-   *
    * @param {number} stepIndex The step index to be validated.
    * @returns {boolean} Returns if the step is valid.
    * @public
@@ -157,7 +147,6 @@ function(Control) {
 
   /**
    * Goes to the given step. The step must exist.
-   *
    * @param {number} stepIndex The step to go to.
    * @private
    */
@@ -171,7 +160,6 @@ function(Control) {
 
   /**
    * Sets the first step of the tour.
-   *
    * @private
    */
   Tour.prototype._setFirstStep = function() {
@@ -183,7 +171,6 @@ function(Control) {
 
   /**
    * Sets the last step of the tour.
-   *
    * @private
    */
   Tour.prototype._setLastStep = function() {
