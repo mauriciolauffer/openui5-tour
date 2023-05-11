@@ -10,6 +10,7 @@ module.exports = function(config) {
       'src/**/!(thirdparty)/*.js': ['coverage']
     },
     coverageReporter: {
+      includeAllSources: true,
       type: 'lcov',
       dir: 'coverage/',
       check: {

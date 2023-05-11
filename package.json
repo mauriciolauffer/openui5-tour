@@ -23,14 +23,15 @@
   ],
   "devDependencies": {
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
-    "@openui5/ts-types": "^1.101.0",
-    "eslint": "^8.15.0",
-    "eslint-config-mlauffer-ui5": "^0.3.2",
-    "karma": "^6.3.20",
-    "karma-chrome-launcher": "^3.1.1",
+    "@openui5/ts-types": "^1.113.0",
+    "@ui5/middleware-code-coverage": "^1.0.3",
+    "eslint": "^8.40.0",
+    "eslint-config-mlauffer-ui5": "^0.4.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "^2.2.0",
     "karma-coveralls": "^2.1.0",
-    "karma-ui5": "^2.4.0"
+    "karma-ui5": "^3.0.3"
   },
   "scripts": {
     "start": "ui5 serve",

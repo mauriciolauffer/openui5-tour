@@ -8,10 +8,6 @@ sap.ui.getCore().attachInit(function() {
     'openui5/tour/library',
     'test/unit/allTests'
   ], function() {
-    if (window.blanket) {
-      window.blanket.options('sap-ui-cover-only', 'openui5/tour');
-    }
-
     QUnit.start();
   });
 });
