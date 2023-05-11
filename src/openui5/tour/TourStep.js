@@ -6,35 +6,31 @@
 
 sap.ui.define([
   'sap/m/Button',
-  'sap/m/ButtonType',
-  'sap/m/PlacementType',
   'sap/m/ResponsivePopover',
-  'sap/ui/core/Control'
+  'sap/ui/core/Control',
+  'sap/m/library'
 ],
 /**
  * Module Dependencies
- *
  * @param {sap.m.Button} Button UI5 button
- * @param {sap.m.ButtonType} ButtonType UI5 button type
- * @param {sap.m.PlacementType} PlacementType UI5 placement type
  * @param {sap.m.ResponsivePopover} ResponsivePopover UI5 Responsive popover
  * @param {sap.ui.core.Control} Control UI5 control to be extended
+ * @param {sap.m} mLibrary sap.m.library
  * @returns {object} TourStep control, an extended UI5 control
  */
-function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
+function(Button, ResponsivePopover, Control, mLibrary) {
   /**
    * OpenUI5 TourStep.
    * Tour Step is a popup with the details to be displayed
-   *
+   * @param {string} [sId] ID for the new control, generated automatically if no ID is given
+   * @param {object} [mSettings] Initial settings for the new control
+   * @class
+   * @alias openui5.tour.TourStep
    * @author Mauricio Lauffer
    * @version ${version}
-   * @class
-   * @namespace
-   * @name openui5.tour
    * @public
-   * @alias openui5.tour.TourStep
    */
-  const TourStep = Control.extend('openui5.tour.TourStep', {
+  const TourStep = Control.extend('openui5.tour.TourStep', /** @lends openui5.tour.TourStep.prototype */{
     metadata: {
       library: 'openui5.tour',
       properties: {
@@ -55,7 +51,7 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
          * Determines where the dialog will be placed.
          * This property only takes effect on desktop or tablet. Please see the documentation sap.m.Popover#placement.
          */
-        placement: {type: 'sap.m.PlacementType', group: 'Behavior', defaultValue: PlacementType.PreferredTopOrFlip}
+        placement: {type: 'sap.m.PlacementType', group: 'Behavior', defaultValue: mLibrary.PlacementType.PreferredTopOrFlip}
       },
       defaultAggregation: 'content',
       aggregations: {
@@ -73,7 +69,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Initializes step object
-   *
    * @public
    */
   TourStep.prototype.init = function() {
@@ -83,7 +78,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Destroys all content on tour step
-   *
    * @public
    */
   TourStep.prototype.exit = function() {
@@ -91,7 +85,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Opens dialog step
-   *
    * @public
    */
   TourStep.prototype.open = function() {
@@ -107,7 +100,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Closes dialog step
-   *
    * @public
    */
   TourStep.prototype.close = function() {
@@ -118,7 +110,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Sets step as the first one in the tour
-   *
    * @param {boolean} isFirstStep Whether the step is the first one or not
    * @public
    */
@@ -128,7 +119,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Sets steps as the last one in the tour
-   *
    * @param {boolean} isLastStep Whether the step is the last one or not
    * @public
    */
@@ -138,7 +128,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Sets popup as first step
-   *
    * @param {sap.m.ResponsivePopover} popup Tour step's popup
    * @private
    */
@@ -148,7 +137,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Sets popup as last step
-   *
    * @param {sap.m.ResponsivePopover} popup Tour step's popup
    * @private
    */
@@ -158,7 +146,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Gets Tour Step's popup
-   *
    * @returns {sap.m.ResponsivePopover} Tour step's popup
    * @private
    */
@@ -181,31 +168,28 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Sets finish button in the popup
-   *
    * @param {sap.m.ResponsivePopover} popup Tour step's popup
    * @private
    */
   TourStep.prototype._setFinishButton = function(popup) {
     const button = this._createFinishButton(popup.getId(), this._finishStep.bind(this));
     popup.setEndButton(button);
-    button.setType(ButtonType.Emphasized);
+    button.setType(mLibrary.ButtonType.Emphasized);
   };
 
   /**
    * Sets next button in the popup
-   *
    * @param {sap.m.ResponsivePopover} popup Tour step's popup
    * @private
    */
   TourStep.prototype._setNextButton = function(popup) {
     const button = this._createNextButton(popup.getId(), this._nextStep.bind(this));
     popup.setEndButton(button);
-    button.setType(ButtonType.Emphasized);
+    button.setType(mLibrary.ButtonType.Emphasized);
   };
 
   /**
    * Sets previous button in the popup
-   *
    * @param {sap.m.ResponsivePopover} popup Tour step's popup
    * @private
    */
@@ -216,7 +200,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Builds a popup
-   *
    * @param {string} tourStepId parent's ID
    * @param {sap.m.PlacementType} placement Where popup will be placed
    * @param {string} title Tour step's title
@@ -237,7 +220,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Builds finish button
-   *
    * @param {string} popupId Parent's ID
    * @param {Function} handlePress A function to handle press event
    * @returns {sap.m.Button} A new finish button instance
@@ -253,7 +235,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Builds next button
-   *
    * @param {string} popupId Parent's ID
    * @param {Function} handlePress A function to handle press event
    * @returns {sap.m.Button} A new next button instance
@@ -269,7 +250,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Builds previous button
-   *
    * @param {string} popupId Parent's ID
    * @param {Function} handlePress A function to handle press event
    * @returns {sap.m.Button} A new previous button instance
@@ -285,7 +265,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Validates the current step, and moves one step further.
-   *
    * @private
    */
   TourStep.prototype._nextStep = function() {
@@ -294,7 +273,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Discards the current step and goes one step back.
-   *
    * @private
    */
   TourStep.prototype._previousStep = function() {
@@ -303,7 +281,6 @@ function(Button, ButtonType, PlacementType, ResponsivePopover, Control) {
 
   /**
    * Discards the current step and goes one step back.
-   *
    * @private
    */
   TourStep.prototype._finishStep = function() {

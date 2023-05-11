@@ -11,21 +11,19 @@ sap.ui.define([
 ],
 /**
  * Module Dependencies
- *
  * @param {sap.ui.core.Core} Core - sap.ui.core.Core
- * @returns {object} openui5.tour library
+ * @returns {object|undefined} openui5.tour library
  */
 function(Core) {
   /**
    * OpenUI5 library: openui5.tour
-   *
    * @namespace
-   * @name openui5.tour
+   * @alias openui5.tour
    * @author Mauricio Lauffer
    * @version ${version}
    * @public
    */
-  Core.initLibrary({
+  return Core.initLibrary({
     name: 'openui5.tour',
     dependencies: [
       'sap.ui.core',
@@ -38,6 +36,4 @@ function(Core) {
     noLibraryCSS: true,
     version: '${version}'
   });
-
-  return openui5.tour; // eslint-disable-line
 });
