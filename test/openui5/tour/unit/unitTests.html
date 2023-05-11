@@ -18,7 +18,7 @@
     data-sap-ui-libs="sap.m"
     data-sap-ui-logLevel="ERROR"
     data-sap-ui-resourceroots='{
-      "openui5.tour": "/resources/openui5/tour",
+      "openui5.tour": "../../../../resources/openui5/tour",
       "test.unit": "./"}'></script>
 </head>
 
@@ -27,7 +27,7 @@
   <div id="qunit-fixture"></div>
   <script defer src="/resources/sap/ui/thirdparty/qunit-2.js"></script>
 	<script defer src="/resources/sap/ui/qunit/qunit-junit.js"></script>
-	<script defer src="/resources/sap/ui/qunit/qunit-coverage.js"></script>
+  <script defer src="/resources/sap/ui/qunit/qunit-coverage-istanbul.js" data-sap-ui-cover-only="openui5/tour/"></script>
 	<script defer src="/resources/sap/ui/thirdparty/sinon.js"></script>
 	<script defer src="/resources/sap/ui/thirdparty/sinon-qunit.js"></script>
   <script defer src="unitTests.js"></script>

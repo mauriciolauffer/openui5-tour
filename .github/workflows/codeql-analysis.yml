@@ -15,8 +15,6 @@ on:
   push:
     branches: [ master ]
   pull_request:
-  schedule:
-    - cron: '30 5 * * 1'
 
 permissions: read-all
 
