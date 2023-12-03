@@ -1,4 +1,4 @@
-specVersion: "3.0"
+specVersion: "3.1"
 metadata:
   name: openui5-tour
   copyright: |-
@@ -8,16 +8,17 @@ metadata:
 type: library
 framework:
   name: OpenUI5
-  version: 1.113.0
+  version: 1.120.0
   libraries:
     - name: sap.ui.core
+      development: true
     - name: sap.m
       development: true
+    - name: themelib_sap_horizon
+      development: true
+
 builder:
   resources:
     excludes:
+      - "/test/**"
       - "/test-resources/**"
-server:
-  customMiddleware:
-  - name: "@ui5/middleware-code-coverage"
-    afterMiddleware: compression
