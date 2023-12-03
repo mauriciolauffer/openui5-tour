@@ -16,20 +16,21 @@
     "showcase"
   ],
   "main": "dist/resources/openui5/tour/library-preload.js",
+  "browser": "dist/resources/openui5/tour/library-preload.js",
   "files": [
     "dist",
     "src",
     "ui5.yaml"
   ],
   "devDependencies": {
-    "@openui5/ts-types": "^1.114.0",
+    "@openui5/ts-types": "^1.120.1",
     "@wdio/cli": "^8.24.6",
     "@wdio/devtools-service": "^8.24.6",
     "@wdio/local-runner": "^8.24.6",
     "@wdio/mocha-framework": "^8.24.6",
     "@wdio/spec-reporter": "^8.24.2",
-    "eslint": "^8.41.0",
-    "eslint-config-mlauffer-ui5": "^0.4.0",
+    "eslint": "^8.55.0",
+    "eslint-config-mlauffer-ui5": "^0.5.1",
     "eslint-plugin-wdio": "^8.20.0",
     "wdio-qunit-service": "^0.1.1"
   },

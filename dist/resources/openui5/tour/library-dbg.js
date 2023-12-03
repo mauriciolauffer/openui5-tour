@@ -7,16 +7,16 @@
  */
 
 sap.ui.define([
-  'sap/ui/core/Core',
+  'sap/ui/core/Lib',
   'sap/ui/core/library',
   'sap/m/library'
 ],
 /**
  * Module Dependencies
- * @param {sap.ui.core.Core} Core - sap.ui.core.Core
- * @returns {object|undefined} openui5.tour library
+ * @param {sap.ui.core.Lib} Lib - sap.ui.core.Lib
+ * @returns {object} openui5.tour library
  */
-function(Core) {
+function(Lib) {
   /**
    * OpenUI5 library: openui5.tour
    * @namespace
@@ -25,7 +25,7 @@ function(Core) {
    * @version 0.1.0
    * @public
    */
-  return Core.initLibrary({
+  return Lib.init({
     name: 'openui5.tour',
     dependencies: [
       'sap.ui.core',
