@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/mauriciolauffer/openui5-tour/compare/v0.1.0...v1.0.0) (2023-12-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Use new sap.ui.core.Lib from v1.120.0
+
+### Features
+
+* Use new sap.ui.core.Lib from v1.120.0 ([5a7a0dc](https://github.com/mauriciolauffer/openui5-tour/commit/5a7a0dc757934a450c2a4ce5b1be86ef2463853e))
+
 ## [0.1.0](https://github.com/mauriciolauffer/openui5-tour/compare/v0.0.26...v0.1.0) (2023-05-11)
 
 
