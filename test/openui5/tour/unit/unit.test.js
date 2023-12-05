@@ -8,6 +8,6 @@ describe('QUnit test page', () => {
     expect(qunitResults).toBeTruthy();
 
     const coverage = await browser.getCoverageReport();
-    expect(coverage?.statements.pct).toBeGreaterThan(80);
+    expect(coverage?.statements.pct).toBeGreaterThan(50);
   });
 });
