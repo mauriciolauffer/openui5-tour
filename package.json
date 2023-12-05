@@ -30,7 +30,7 @@
     "@wdio/mocha-framework": "^8.24.6",
     "@wdio/spec-reporter": "^8.24.2",
     "eslint": "^8.55.0",
-    "eslint-config-mlauffer-ui5": "^0.5.1",
+    "eslint-config-mlauffer-ui5": "^0.5.2",
     "eslint-plugin-wdio": "^8.20.0",
     "wdio-qunit-service": "^0.1.1"
   },
