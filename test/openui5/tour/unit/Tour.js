@@ -8,10 +8,6 @@ sap.ui.require([
   let viewForTest = {};
   const viewDefinition = '<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"><Page id="page"><Panel id="panel"><Title text="Title 1"/></Panel></Page></mvc:View>';
 
-  /**
-   *
-   * @param target
-   */
   function createTourStep(target) {
     return new TourStep({
       content: new sap.m.Text({text: 'Hey! It is a tour!'}),
@@ -81,7 +77,7 @@ sap.ui.require([
         const tour = new Tour();
         try {
           tour._isValidStepIndex(0);
-          assert.deepEqual(true, false, 'Should never be executed!'); // eslint-disable-line
+          assert.deepEqual(true, false, 'Should never be executed!');
         } catch (e) {
           assert.deepEqual(e instanceof Error, true);
         }
@@ -93,7 +89,7 @@ sap.ui.require([
         });
         try {
           tour._isValidStepIndex(-1);
-          assert.deepEqual(true, false, 'Should never be executed!'); // eslint-disable-line
+          assert.deepEqual(true, false, 'Should never be executed!');
         } catch (e) {
           assert.deepEqual(e instanceof Error, true);
         }
@@ -105,7 +101,7 @@ sap.ui.require([
         });
         try {
           tour._isValidStepIndex(3);
-          assert.deepEqual(true, false, 'Should never be executed!'); // eslint-disable-line
+          assert.deepEqual(true, false, 'Should never be executed!');
         } catch (e) {
           assert.deepEqual(e instanceof Error, true);
         }
@@ -170,6 +166,7 @@ sap.ui.require([
         tour.nextStep();
         tour.complete();
         assert.deepEqual(tour._getCurrentStepIndex(), 0);
+        // eslint-disable-next-line sonarjs/no-nested-functions
         setTimeout(() => {
           assert.deepEqual(tour.getSteps()[0].getAggregation('_popup').isOpen(), false);
           tour.destroy();
@@ -214,6 +211,7 @@ sap.ui.require([
         tour.previousStep();
 
         const done = assert.async();
+        // eslint-disable-next-line sonarjs/no-nested-functions
         setTimeout(function() {
           assert.deepEqual(tour._getCurrentStepIndex(), 0);
           done();

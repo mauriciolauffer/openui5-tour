@@ -27,5 +27,10 @@ export default defineConfig([
         ...globals.mocha,
       },
     },
+    rules: {
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-param": "off",
+      "jsdoc/require-returns": "off",
+    },
   },
 ]);
