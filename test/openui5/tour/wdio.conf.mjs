@@ -6,7 +6,7 @@ export const config = {
       'browserName': 'chrome',
       'browserVersion': 'stable',
       'goog:chromeOptions': {
-        args: ['headless', 'disable-gpu', 'window-size=1024,768']
+        args: ['headless', 'disable-gpu', 'window-size=1024,768', 'no-sandbox']
       }
     }
   ],
