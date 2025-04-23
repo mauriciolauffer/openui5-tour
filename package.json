@@ -38,7 +38,8 @@
     "lint": "eslint --cache",
     "lint:ci": "eslint --quiet -f @microsoft/eslint-formatter-sarif -o eslint.sarif",
     "test": "wdio run ./test/openui5/tour/wdio.conf.mjs --watch",
-    "test:ci": "wdio run ./test/openui5/tour/wdio.conf.mjs"
+    "test:ci": "wdio run ./test/openui5/tour/wdio.conf.mjs",
+    "start:test": "concurrently  --kill-others --success last 'npm:start:dist' 'npm:test:ci'"
   },
   "repository": {
     "type": "git",
