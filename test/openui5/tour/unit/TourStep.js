@@ -79,6 +79,7 @@ sap.ui.require([
         tourStep.open();
         tourStep.close();
         const done = assert.async();
+        // eslint-disable-next-line sonarjs/no-nested-functions
         setTimeout(function() {
           assert.deepEqual(tourStep.getAggregation('_popup').isOpen(), false);
           done();
@@ -89,7 +90,7 @@ sap.ui.require([
 
 
     QUnit.module('setIsFirstStep', () => {
-      test('Should set control as First Step', (assert) => { // eslint-disable-line
+      test('Should set control as First Step', (assert) => {
         const tourStep = buildTourStep();
         tourStep.setIsFirstStep(true);
         assert.deepEqual(tourStep._isFirstStep, true);
@@ -99,7 +100,7 @@ sap.ui.require([
 
 
     QUnit.module('setIsLastStep', () => {
-      test('Should set control as First Step', (assert) => { // eslint-disable-line
+      test('Should set control as First Step', (assert) => {
         const tourStep = buildTourStep();
         tourStep.setIsLastStep(true);
         assert.deepEqual(tourStep._isLastStep, true);
